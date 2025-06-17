@@ -1,0 +1,139 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --cursor-color: 99, 102, 241;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  @apply antialiased text-dark-900 dark:text-white bg-white dark:bg-dark-950 transition-colors duration-300;
+  overflow-x: hidden;
+}
+
+/* Custom cursor effect */
+.custom-cursor {
+  @apply pointer-events-none fixed z-50 h-6 w-6 rounded-full opacity-0 transition-all duration-300;
+  background: rgba(var(--cursor-color), 0.3);
+  mix-blend-mode: difference;
+  transform: translate(-50%, -50%);
+}
+
+.custom-cursor-active {
+  @apply opacity-100 scale-150;
+}
+
+.link-hover-effect:hover {
+  @apply text-primary-500 transition-colors duration-300;
+}
+
+/* Animated background */
+.animated-bg {
+  @apply absolute inset-0 -z-10 overflow-hidden;
+}
+
+.animated-bg::before {
+  content: '';
+  @apply absolute inset-0;
+  background: radial-gradient(circle at 25% 25%, rgba(99, 102, 241, 0.1) 0%, transparent 50%),
+             radial-gradient(circle at 75% 75%, rgba(249, 115, 22, 0.08) 0%, transparent 50%);
+}
+
+/* Custom animated dots */
+.dot {
+  @apply absolute rounded-full bg-primary-300 dark:bg-primary-700 opacity-30;
+  animation: floatDot 20s linear infinite;
+}
+
+@keyframes floatDot {
+  0% {
+    transform: translate(0, 0);
+  }
+  25% {
+    transform: translate(10px, 10px);
+  }
+  50% {
+    transform: translate(20px, 0);
+  }
+  75% {
+    transform: translate(10px, -10px);
+  }
+  100% {
+    transform: translate(0, 0);
+  }
+}
+
+/* Parallax effect */
+.parallax {
+  will-change: transform;
+  transition: transform 0.1s linear;
+}
+
+.scroll-reveal {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: all 0.6s ease-out;
+}
+
+.scroll-reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Page transitions */
+.page-transition-enter {
+  opacity: 0;
+  transform: translateY(20px);
+}
+
+.page-transition-enter-active {
+  opacity: 1;
+  transform: translateY(0);
+  transition: opacity 400ms, transform 400ms;
+}
+
+.page-transition-exit {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.page-transition-exit-active {
+  opacity: 0;
+  transform: translateY(-20px);
+  transition: opacity 300ms, transform 300ms;
+}
+
+/* Text gradient */
+.text-gradient {
+  @apply bg-clip-text text-transparent bg-gradient-to-r from-primary-600 to-accent-500;
+}
+
+/* Card hover effects */
+.hover-card {
+  @apply transition-all duration-300 hover:shadow-lg dark:hover:shadow-primary-500/10;
+}
+
+.hover-card:hover {
+  transform: translateY(-5px);
+}
+
+.bg-grid {
+  background-size: 40px 40px;
+  background-image: 
+    linear-gradient(to right, rgba(99, 102, 241, 0.05) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(99, 102, 241, 0.05) 1px, transparent 1px);
+}
+
+.dark .bg-grid {
+  background-image: 
+    linear-gradient(to right, rgba(99, 102, 241, 0.1) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(99, 102, 241, 0.1) 1px, transparent 1px);
+}
+
+.bg-grid-fade {
+  mask-image: radial-gradient(ellipse at center, rgba(0,0,0,1) 50%, rgba(0,0,0,0) 80%);
+}
