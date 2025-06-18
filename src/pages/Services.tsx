@@ -210,7 +210,7 @@ const Services: React.FC = () => {
                       {path.skills.map(skill => (
                         <span 
                           key={skill}
-                          className="px-2 py-1 bg-primary-100 dark:bg-primary-900/20 text-primary-700 dark:text-primary-300 rounded-full text-sm"
+                          className="px-1 py-1 bg-primary-100 dark:bg-primary-900/20 text-primary-700 dark:text-primary-300 rounded-full text-sm"
                         >
                           {skill}
                         </span>
