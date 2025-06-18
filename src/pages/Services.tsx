@@ -48,13 +48,15 @@ const Services: React.FC = () => {
       icon: <Cpu className="h-16 w-16 text-primary-500" />,
       title: "Electronics",
       description: "Master electronic design, PCB layout, embedded systems programming, and IoT device development.",
-      skills: ["Circuit Design", "PCB Layout", "Embedded Systems", "IoT Solutions", "Hardware Testing"]
+      skills: ["AI Circuit Architect","Smart Circuit Designer","Ai Logic Circuit Engineer","AI PCB Designer","AutoLayout Engineer","Precision Board Planner","Embedded AI Engineer","AI Firmware Developer",
+"Real-Time Systems Coder","AIoT Systems Engineer","Smart Device Integrator","Connected Systems Developer","AI Test Automation Engineer","Smart Hardware Validator","Diagnostics & Quality AI Engineer"]
     },
     {
       icon: <Wrench className="h-16 w-16 text-primary-500" />,
       title: "Mechanical",
       description: "Focus on mechanical design, 3D modeling, CAD/CAM, manufacturing processes, and product development.",
-      skills: ["3D Modeling", "CAD/CAM", "Product Design", "Manufacturing", "Simulation"]
+      skills: ["AI 3D Design Specialist","Generative Modeler","Intelligent Shape Architect","AI CAD/CAM Engineer","Smart Machining Designer","Automated Drafting Specialist","AI Product Designer",
+"User-Centric AI Creator","Smart Form & Function Engineer","AI Manufacturing Planner","Intelligent Production Engineer","Smart Factory Integrator","AI Simulation Analyst","Predictive Systems Modeler","Virtual Test Engineer"]
     }
   ];
 
@@ -208,7 +210,7 @@ const Services: React.FC = () => {
                       {path.skills.map(skill => (
                         <span 
                           key={skill}
-                          className="px-3 py-1 bg-primary-100 dark:bg-primary-900/20 text-primary-700 dark:text-primary-300 rounded-full text-sm"
+                          className="px-2 py-1 bg-primary-100 dark:bg-primary-900/20 text-primary-700 dark:text-primary-300 rounded-full text-sm"
                         >
                           {skill}
                         </span>
