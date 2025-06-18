@@ -3,7 +3,7 @@ import { motion } from 'framer-motion';
 import AnimatedSection from '../components/ui/AnimatedSection';
 import ParallaxElement from '../components/ui/ParallaxElement';
 import Button from '../components/ui/Button';
-import teamImage from '../assets/team_image.webp';
+// import teamImage from '../assets/team_image.webp';
 import { ArrowRight, CheckCircle, GraduationCap, Briefcase, Building2, Code, Cpu, Wrench, Users } from 'lucide-react';
 
 const Services: React.FC = () => {
@@ -126,8 +126,13 @@ const Services: React.FC = () => {
                   className="relative rounded-2xl overflow-hidden shadow-xl dark:shadow-dark-900/30"
                   whileHover={{ scale: 1.02 }}
                 >
-                  <img 
+                  {/* <img 
                     src={teamImage} 
+                    alt="VCAP Program" 
+                    className="w-full h-96 md:h-[450px] object-cover"
+                  /> */}
+                  <img 
+                    src="https://images.pexels.com/photos/3182812/pexels-photo-3182812.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2" 
                     alt="VCAP Program" 
                     className="w-full h-96 md:h-[450px] object-cover"
                   />
