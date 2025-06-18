@@ -69,7 +69,7 @@ const Navbar: React.FC<NavbarProps> = ({ isMobile, closeMobileMenu }) => {
               className="mr-2" 
               style={{ width: '32px', height: 'auto' }} // Set a width and let height adjust automatically
             />
-            <span className="font-display font-bold text-4xl text-white">Vibai Innovixs</span>
+            <span className="font-display font-bold text-4xl text-gradient">Vibai Innovixs</span>
           </motion.div>
         </div>
         

@@ -1,4 +1,4 @@
-import React, { useEffect, lazy, Suspense } from 'react';
+import React, { useState, useEffect, lazy, Suspense } from 'react';
 import { Routes, Route, useLocation } from 'react-router-dom';
 import { AnimatePresence } from 'framer-motion';
 import { useCursor } from './context/CursorContext';
@@ -15,12 +15,33 @@ const Services = lazy(() => import('./pages/Services'));
 const Contact = lazy(() => import('./pages/Contact'));
 const NotFound = lazy(() => import('./pages/NotFound'));
 
+const useIsMobile = () => {
+  const [isMobile, setIsMobile] = useState(window.innerWidth < 768);
+
+  useEffect(() => {
+    const handleResize = () => {
+      setIsMobile(window.innerWidth < 768);
+    };
+
+    window.addEventListener('resize', handleResize);
+    return () => {
+      window.removeEventListener('resize', handleResize);
+    };
+  }, []);
+
+  return isMobile;
+};
+
 function App() {
   const location = useLocation();
   const { updateCursorPosition, toggleCursorActive } = useCursor();
 
-  // Handle cursor movement
+   const isMobile = useIsMobile();
+  // Handle cursor movement 
   useEffect(() => {
+      if (isMobile) {
+      return;
+    }
     const handleMouseMove = (e: MouseEvent) => {
       updateCursorPosition(e.clientX, e.clientY);
     };
