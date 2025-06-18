@@ -121,7 +121,7 @@ const About: React.FC = () => {
       </section>
 
       {/* Our Story Section */}
-      <section className="py-16 md:py-20 relative">
+      <section id="team" className="py-16 md:py-20 relative">
         <div className="container mx-auto px-4">
           <div className="flex flex-col md:flex-row items-center md:space-x-12">
             <div className="md:w-1/2 mb-12 md:mb-0">

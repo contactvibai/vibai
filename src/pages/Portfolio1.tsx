@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import AnimatedSection from '../components/ui/AnimatedSection';
-import ParallaxElement from '../components/ui/ParallaxElement';
+// import ParallaxElement from '../components/ui/ParallaxElement';
 import Button from '../components/ui/Button';
-import { Play, Quote, User, Building, Briefcase, CalendarDays, MapPin, ArrowUpRight } from 'lucide-react';
+import { Play, Quote, User, Building, Briefcase, CalendarDays,  ArrowUpRight } from 'lucide-react';
 
 const Portfolio: React.FC = () => {
   // Filter categories for projects

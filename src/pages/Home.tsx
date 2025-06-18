@@ -3,6 +3,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 // import { useInView } from 'react-intersection-observer';
 import { useMotion } from '../context/MotionContext';
 import AnimatedSection from '../components/ui/AnimatedSection';
+import { HashLink } from 'react-router-hash-link';
 import ParallaxElement from '../components/ui/ParallaxElement';
 import Button from '../components/ui/Button';
 import { ArrowRight, GraduationCap, Home as HomeIcon, Briefcase, CheckCircle, Code as CodeXml, Cpu, Users, ExternalLink } from 'lucide-react';
@@ -137,7 +138,7 @@ const Home: React.FC = () => {
   return (
     <>
       {/* Hero Section */}
-      <section className="pt-12 md:pt-16 pb-20 md:pb-8 relative overflow-hidden">
+      <section id="hero"  className="pt-12 md:pt-16 pb-20 md:pb-8 relative overflow-hidden">
         <div className="container mx-auto px-4">
           <div className="flex flex-col md:flex-row items-start">
             <div className="md:w-1/2 mb-12 md:mb-0 md:pt-8">
@@ -309,14 +310,19 @@ const Home: React.FC = () => {
                     </div>
                     
                     <div className="mt-6 pt-6 border-t border-dark-200 dark:border-dark-700">
-                      <motion.a 
-                        href="/contact"
-                        className="w-full py-3 bg-primary-500 hover:bg-primary-600 text-white font-medium rounded-lg transition-colors flex items-center justify-center"
-                        whileHover={{ scale: 1.02 }}
-                        whileTap={{ scale: 0.98 }}
-                      >
-                        Apply Now <ArrowRight className="ml-2 h-5 w-5" />
-                      </motion.a>
+                      <motion.div
+    whileHover={{ scale: 1.02 }}
+    whileTap={{ scale: 0.98 }}
+  >
+    <HashLink
+      smooth
+      to="/contact#form"
+      // Check this className carefully. It must include all three centering classes.
+      className="w-full py-3 bg-primary-500 hover:bg-primary-600 text-white font-medium rounded-lg transition-colors flex items-center justify-center"
+    >
+      Apply Now <ArrowRight className="ml-2 h-5 w-5" />
+    </HashLink>
+  </motion.div>
                     </div>
                   </motion.div>
                 </div>

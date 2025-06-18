@@ -111,7 +111,7 @@ const Contact: React.FC = () => {
   return (
     <>
       {/* Hero Section */}
-      <section className="py-20 md:py-28 relative overflow-hidden">
+      <section id="hero" className="py-20 md:py-28 relative overflow-hidden">
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto text-center">
             <AnimatedSection delay={0.1} direction="up">
@@ -154,7 +154,7 @@ const Contact: React.FC = () => {
       </section>
 
       {/* Contact Form Section */}
-      <section className="py-16 relative">
+      <section id="form" className="py-16 relative">
         <div className="container mx-auto px-4">
           <div className="max-w-6xl mx-auto">
             <div className="flex flex-col lg:flex-row rounded-2xl overflow-hidden shadow-xl dark:shadow-dark-900/30">
@@ -329,7 +329,7 @@ const Contact: React.FC = () => {
       </section> */}
 
       {/* FAQ Section */}
-      <section className="py-16 md:py-24 relative">
+      <section id="faq"  className="py-16 md:py-24 relative">
         <div className="container mx-auto px-4">
           <AnimatedSection delay={0.1} direction="up" className="text-center mb-16">
             <h2 className="text-3xl md:text-4xl font-display font-bold mb-6">
@@ -400,7 +400,7 @@ const Contact: React.FC = () => {
             <p className="text-dark-600 dark:text-dark-300 mb-6">
               Still have questions? Reach out to our team directly.
             </p>
-            <Button href="#" variant="outline">
+            <Button href="#form" variant="outline">
               Contact Support Team
             </Button>
           </AnimatedSection>
