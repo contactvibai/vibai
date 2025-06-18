@@ -344,7 +344,7 @@ const Contact: React.FC = () => {
             {[
               {
                 question: "Do I need any specific educational qualifications to apply?",
-                answer: "No. We don't require any specific degrees or educational qualifications. Our selection is based purely on your skills and aptitude."
+                answer: "We don’t require any specific degrees. If you have the aptitude, passion, and a minimum of 15 years of basic education, you’re eligible — no formal qualifications needed."
               },
               {
                 question: "How good does my English need to be?",

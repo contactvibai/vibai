@@ -30,7 +30,7 @@ const NotFound: React.FC = () => {
             Page Not Found
           </h1>
           <p className="text-lg text-dark-600 dark:text-dark-300 mb-8 max-w-xl mx-auto">
-            The page you are looking for might have been removed, had its name changed, or is temporarily unavailable.
+            The page you are looking for might be temporarily unavailable. It’s possible that it is currently under maintenance. Please try again later or return to the homepage for more options.
           </p>
           
           <div className="flex flex-col sm:flex-row justify-center space-y-4 sm:space-y-0 sm:space-x-4">

@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { useInView } from 'react-intersection-observer';
+// import { useInView } from 'react-intersection-observer';
 import { useMotion } from '../context/MotionContext';
 import AnimatedSection from '../components/ui/AnimatedSection';
 import ParallaxElement from '../components/ui/ParallaxElement';
@@ -40,7 +40,7 @@ const Home: React.FC = () => {
     initial: { opacity: 0, y: 20 },
     animate: { opacity: 1, y: 0 }
   };
-
+  
   const backgroundVariants = {
     initial: { 
       scaleX: 0,
@@ -87,10 +87,10 @@ const Home: React.FC = () => {
     }
   ];
 
-  const internshipFeatures = [
+   const fresherFeatures = [
     { 
       icon: <CheckCircle className="h-6 w-6 text-accent-500" />, 
-      title: '₹4,000/month stipend',
+      title: '₹15,000/month assured salary',
     },
     { 
       icon: <CheckCircle className="h-6 w-6 text-accent-500" />, 
@@ -98,58 +98,75 @@ const Home: React.FC = () => {
     },
     { 
       icon: <CheckCircle className="h-6 w-6 text-accent-500" />, 
-      title: 'Learn by Building',
+      title: 'Practical, Guided Training',
     },
   ];
 
+  const internshipFeatures = [
+    { 
+      icon: <CheckCircle className="h-6 w-6 text-primary-500" />, 
+      title: '₹4,000/month stipend',
+    },
+    { 
+      icon: <CheckCircle className="h-6 w-6 text-primary-500" />, 
+      title: 'Work on Real Projects',
+    },
+    { 
+      icon: <CheckCircle className="h-6 w-6 text-primary-500" />, 
+      title: 'Learn by Building',
+    },
+  ];
+  
+
   const staggerDelay = 0.3;
   const textHighlights = [
-    { text: "No Interview Conducted", color: "bg-red-500/20" },
-    { text: "No Degree Asked", color: "bg-blue-500/20" },
-    { text: "No English Required", color: "bg-green-500/20" },
-    { text: "No Skills Mandatory", color: "bg-purple-500/20" }
+    { text: "No Interview", color: "bg-red-500/20" },
+    { text: "No Degree", color: "bg-blue-500/20" },
+    { text: "No English", color: "bg-green-500/20" },
+    { text: "No Skills", color: "bg-purple-500/20" }
   ];
 
   // Success metrics for startup
-  const successMetrics = [
-    { number: "150+", label: "Lives Changed" },
-    { number: "85%", label: "Success Rate" },
-    { number: "25+", label: "Partner Companies" },
-    { number: "₹18K", label: "Avg. Salary" }
-  ];
+  // const successMetrics = [
+  //   { number: "150+", label: "Lives Changed" },
+  //   { number: "85%", label: "Success Rate" },
+  //   { number: "25+", label: "Partner Companies" },
+  //   { number: "₹18K", label: "Avg. Salary" }
+  // ];
 
   return (
     <>
       {/* Hero Section */}
-      <section className="pt-12 md:pt-16 pb-20 md:pb-32 relative overflow-hidden">
+      <section className="pt-12 md:pt-16 pb-20 md:pb-8 relative overflow-hidden">
         <div className="container mx-auto px-4">
           <div className="flex flex-col md:flex-row items-start">
             <div className="md:w-1/2 mb-12 md:mb-0 md:pt-8">
               <AnimatedSection delay={0.1}>
                 <h1 className="text-3xl md:text-4xl lg:text-5xl font-display font-bold leading-tight mb-6">
                   {textHighlights.map((highlight, index) => (
-                    <motion.div
+                    <motion.span
                       key={highlight.text}
                       initial="initial"
                       animate="animate"
                       variants={textVariants}
-                      className="relative inline-block mb-3"
+                      className="relative block mb-3"
                     >
                       <AnimatePresence mode="wait">
                         {currentTextHighlight === index && (
                           <motion.div
                             key={`highlight-${index}`}
-                            className={`absolute inset-0 ${highlight.color} rounded-lg`}
+                            className={`absolute top-0 left-0 ${highlight.color} rounded-lg`}
                             initial="initial"
                             animate="animate"
                             exit="exit"
                             variants={backgroundVariants}
-                          />
+                             >
+                            <span className="block opacity-0 px-2">{highlight.text}</span>
+                          </motion.div>
                         )}
                       </AnimatePresence>
                       <span className="relative z-10 px-2">{highlight.text}</span>
-                      <br />
-                    </motion.div>
+                    </motion.span>
                   ))}
 
                   <motion.div
@@ -158,7 +175,7 @@ const Home: React.FC = () => {
                     transition={{ delay: 4 * staggerDelay, duration: 0.5 }}
                     className="text-gradient mt-4"
                   >
-                    Only Passion. Effort.
+                    Only Effort and Passion.
                   </motion.div>
                 </h1>
               </AnimatedSection>
@@ -345,6 +362,117 @@ const Home: React.FC = () => {
         </div>
       </section> */}
 
+      {/* For Freshers Section */}
+      <section className="pt-0 pb-20  relative">
+        <div className="container mx-auto px-4">
+          <AnimatedSection delay={0.1} direction="up" className="text-center mb-16">
+            <h2 className="text-3xl md:text-4xl font-display font-bold mb-4">
+              For <span className="text-gradient">Freshers</span>
+            </h2>
+            <p className="text-xl text-dark-600 dark:text-dark-300 max-w-3xl mx-auto">
+              Struggling to get your first job? Start your career journey with our <strong>VCAP - Vibai Career Assurance Programme</strong>.
+            </p>
+          </AnimatedSection>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+             <div>
+              <AnimatedSection delay={0.4} direction="right" className="space-y-6">
+                <div className="bg-white dark:bg-dark-900 border border-dark-200 dark:border-dark-700 rounded-xl p-6 hover-card">
+                  <div className="flex">
+                    <div className="mr-4">
+                      <div className="p-3 bg-primary-100 dark:bg-primary-900/20 text-primary-500 rounded-lg">
+                        <Briefcase size={24} />
+                      </div>
+                    </div>
+                    <div>
+                      <h4 className="text-lg font-semibold mb-1">Real Work. Real Growth.</h4>
+                      <p className="text-dark-600 dark:text-dark-400">
+                        From day one, you’ll be part of real projects used by actual customers. No fake tasks. No fluff. Just hands-on learning and real contributions.
+                      </p>
+                    </div>
+                  </div>
+                </div>
+                
+                <div className="bg-white dark:bg-dark-900 border border-dark-200 dark:border-dark-700 rounded-xl p-6 hover-card">
+                  <div className="flex">
+                    <div className="mr-4">
+                      <div className="p-3 bg-primary-100 dark:bg-primary-900/20 text-primary-500 rounded-lg">
+                        <Users size={24} />
+                      </div>
+                    </div>
+                    <div>
+                      <h4 className="text-lg font-semibold mb-1">Your Effort &gt; Your Resume</h4>
+                      <p className="text-dark-600 dark:text-dark-400">
+                        We believe in what you can become—not just what you’ve done. VCAP is your chance to prove yourself, grow fast, and get ahead.
+                      </p>
+                    </div>
+                  </div>
+                </div>
+                
+                <div className="bg-white dark:bg-dark-900 border border-dark-200 dark:border-dark-700 rounded-xl p-6 hover-card">
+                  <div className="flex items-center justify-between">
+                    <div className="flex-1">
+                      <h4 className="text-lg font-semibold mb-1">Hear Their Stories</h4>
+                      <p className="text-dark-600 dark:text-dark-400">
+                       Many before you have broken the “no experience, no job” cycle with VCAP. You can too.
+                      </p>
+                    </div>
+                    <motion.a 
+                      href="/portfolio"
+                      className="p-3 rounded-full bg-dark-100 dark:bg-dark-800 text-dark-700 dark:text-dark-300"
+                      whileHover={{ scale: 1.1, rotate: 15 }}
+                      whileTap={{ scale: 0.9 }}
+                    >
+                      <ExternalLink size={20} />
+                    </motion.a>
+                  </div>
+                </div>
+              </AnimatedSection>
+            </div>
+            <div>
+              <AnimatedSection delay={0.2} direction="left">
+                <div className="rounded-2xl overflow-hidden shadow-xl dark:shadow-dark-900/30 bg-white dark:bg-dark-900 border border-dark-200 dark:border-dark-700">
+                  <div className="p-8">
+                    <div className      ="inline-flex items-center px-4 py-2 bg-accent-100 dark:bg-accent-900/20 text-accent-600 dark:text-accent-300 rounded-full mb-6">
+                      <GraduationCap className="h-5 w-5 mr-2" />
+                      <span className="font-medium">VCAP - Vibai Career Assurance Programme</span>
+                    </div>
+                    
+                    <h3 className="text-2xl font-display font-bold mb-4">
+                      Tired of Rejections for “No Experience”?
+                    </h3>
+                    
+                    <p className="text-dark-600 dark:text-dark-400 mb-6">
+                      With VCAP, you don’t need a fancy degree, job history, or fluent English. We’ll train you on real-world skills and pay you from day one.
+                    </p>
+                    
+                    <div className="space-y-3 mb-6">
+                      {fresherFeatures.map((feature, index) => (
+                        <motion.div 
+                          key={feature.title}
+                          className="flex items-center"
+                          initial={prefersReducedMotion ? {} : { opacity: 0, x: -10 }}
+                          animate={prefersReducedMotion ? {} : { opacity: 1, x: 0 }}
+                          transition={{ duration: 0.3, delay: 0.1 * index }}
+                        >
+                          <div className="mr-3">
+                            {feature.icon}
+                          </div>
+                          <p className="font-medium">{feature.title}</p>
+                        </motion.div>
+                      ))}
+                    </div>
+                    
+                    <Button href="/contact" variant="secondary" fullWidth>
+                      Apply for VCAP
+                    </Button>
+                  </div>
+                </div>
+              </AnimatedSection>
+            </div>
+          </div>
+        </div>
+      </section> 
+
       {/* For Students Section */}
       <section className="py-20 relative">
         <div className="container mx-auto px-4">
@@ -362,7 +490,7 @@ const Home: React.FC = () => {
               <AnimatedSection delay={0.2} direction="left">
                 <div className="rounded-2xl overflow-hidden shadow-xl dark:shadow-dark-900/30 bg-white dark:bg-dark-900 border border-dark-200 dark:border-dark-700">
                   <div className="p-8">
-                    <div className      ="inline-flex items-center px-4 py-2 bg-accent-100 dark:bg-accent-900/20 text-accent-600 dark:text-accent-300 rounded-full mb-6">
+                    <div className      ="inline-flex items-center px-4 py-2 bg-primary-100 dark:bg-primary-900/20 text-primary-600 dark:text-primary-300 rounded-full mb-6">
                       <GraduationCap className="h-5 w-5 mr-2" />
                       <span className="font-medium">Vstart Internship Programme</span>
                     </div>
@@ -392,7 +520,7 @@ const Home: React.FC = () => {
                       ))}
                     </div>
                     
-                    <Button href="/contact" variant="secondary" fullWidth>
+                    <Button href="/contact" variant="primary" fullWidth>
                       Apply for Vstart Internship
                     </Button>
                   </div>
@@ -405,7 +533,7 @@ const Home: React.FC = () => {
                 <div className="bg-white dark:bg-dark-900 border border-dark-200 dark:border-dark-700 rounded-xl p-6 hover-card">
                   <div className="flex">
                     <div className="mr-4">
-                      <div className="p-3 bg-primary-100 dark:bg-primary-900/20 text-primary-500 rounded-lg">
+                      <div className="p-3 bg-accent-100 dark:bg-accent-900/20 text-accent-500 rounded-lg">
                         <Briefcase size={24} />
                       </div>
                     </div>
@@ -421,7 +549,7 @@ const Home: React.FC = () => {
                 <div className="bg-white dark:bg-dark-900 border border-dark-200 dark:border-dark-700 rounded-xl p-6 hover-card">
                   <div className="flex">
                     <div className="mr-4">
-                      <div className="p-3 bg-primary-100 dark:bg-primary-900/20 text-primary-500 rounded-lg">
+                      <div className="p-3 bg-accent-100 dark:bg-accent-900/20 text-accent-500 rounded-lg">
                         <Users size={24} />
                       </div>
                     </div>

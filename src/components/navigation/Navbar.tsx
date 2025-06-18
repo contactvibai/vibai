@@ -3,6 +3,8 @@ import { NavLink } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { useTheme } from '../../context/ThemeContext';
 import { useMotion } from '../../context/MotionContext';
+import logoImage from '../../assets/logo.png'; // A standard import for images
+// Adjust the path to where you saved your PNG file
 import { Sun, Moon, Zap, SlidersHorizontal } from 'lucide-react';
 
 interface NavbarProps {
@@ -52,7 +54,7 @@ const Navbar: React.FC<NavbarProps> = ({ isMobile, closeMobileMenu }) => {
     return (
       <motion.nav
         className="flex flex-col items-center justify-center h-full w-full"
-        variants={variants}
+        variants={variants.container}
         initial="hidden"
         animate="show"
       >
@@ -61,7 +63,12 @@ const Navbar: React.FC<NavbarProps> = ({ isMobile, closeMobileMenu }) => {
             variants={variants.item}
             className="flex items-center"
           >
-            <Zap size={32} className="text-primary-500 mr-2" />
+             <img 
+              src={logoImage} 
+              alt="Vibai Innovixs Logo" 
+              className="mr-2" 
+              style={{ width: '32px', height: 'auto' }} // Set a width and let height adjust automatically
+            />
             <span className="font-display font-bold text-4xl text-white">Vibai Innovixs</span>
           </motion.div>
         </div>
@@ -120,7 +127,15 @@ const Navbar: React.FC<NavbarProps> = ({ isMobile, closeMobileMenu }) => {
           whileTap={{ scale: 0.95 }}
           transition={{ type: "spring", stiffness: 400, damping: 17 }}
         >
-          <Zap size={28} className="text-primary-500 mr-2" />
+          {/* <div className="bg-[#1b1c1d] p-2 rounded-lg flex items-center justify-center mr-2"> */}
+           <img 
+            src={logoImage} 
+            alt="Vibai Innovixs Logo" 
+            className="mr-2"
+            style={{ width: '50px', height: 'auto' }} // Set a width and let height adjust automatically
+          />
+          {/* </div> */}
+          {/* <Zap size={28} className="text-primary-500 mr-2" />/ */}
         </motion.div>
         <span className="font-display font-bold text-2xl text-gradient">Vibai Innovixs</span>
       </NavLink>

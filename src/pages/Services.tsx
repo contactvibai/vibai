@@ -3,6 +3,7 @@ import { motion } from 'framer-motion';
 import AnimatedSection from '../components/ui/AnimatedSection';
 import ParallaxElement from '../components/ui/ParallaxElement';
 import Button from '../components/ui/Button';
+import teamImage from '../assets/team_image.webp';
 import { ArrowRight, CheckCircle, GraduationCap, Briefcase, Building2, Code, Cpu, Wrench, Users } from 'lucide-react';
 
 const Services: React.FC = () => {
@@ -38,7 +39,10 @@ const Services: React.FC = () => {
       icon: <Code className="h-16 w-16 text-primary-500" />,
       title: "Software",
       description: "Learn software development with focus on AI integration, web and mobile app development, and backend engineering.",
-      skills: ["Web Development", "Mobile Apps", "AI/ML Integration", "Cloud Solutions", "Backend Systems"]
+      skills: ["AI Web Developer", "Front-End AI Engineer", "Smart UI Builder", "AI Mobile App Developer", "Smart App Engineer", "Cross-Platform AI Coder", "ML Model Developer",
+        "AI Solutions Engineer","Data & Intelligence Engineer","Cloud AI Engineer","DevOps & Automation Specialist","Cloud Infrastructure Developer","AI Backend Developer","API & Systems Engineer",
+        "Logic Automation Developer"
+      ]
     },
     {
       icon: <Cpu className="h-16 w-16 text-primary-500" />,
@@ -123,7 +127,7 @@ const Services: React.FC = () => {
                   whileHover={{ scale: 1.02 }}
                 >
                   <img 
-                    src="https://images.pexels.com/photos/3182812/pexels-photo-3182812.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2" 
+                    src={teamImage} 
                     alt="VCAP Program" 
                     className="w-full h-96 md:h-[450px] object-cover"
                   />

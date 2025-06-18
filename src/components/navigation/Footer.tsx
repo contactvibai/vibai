@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
+import logoImage from '../../assets/logo.png'; // A standard import for images
 import { Zap, Github, Linkedin, Twitter, Instagram } from 'lucide-react';
 
 const Footer: React.FC = () => {
@@ -35,15 +36,23 @@ const Footer: React.FC = () => {
           {/* Logo and company info */}
           <div>
             <Link to="/" className="inline-flex items-center mb-4">
-              <Zap size={24} className="text-primary-500 mr-2" />
-              <span className="font-display font-bold text-xl text-dark-900 dark:text-white">Vibai Innovixs</span>
+            {/* <div className="bg-[#1b1c1d] p-2 rounded-lg flex items-center justify-center mr-2"> */}
+           <img 
+            src={logoImage} 
+            alt="Vibai Innovixs Logo" 
+            className="mr-2"
+            style={{ width: '200px', height: 'auto' }} // Set a width and let height adjust automatically
+          />
+          {/* </div> */}
+              {/* <Zap size={24} className="text-primary-500 mr-2" /> */}
+              {/* <span className="font-display font-bold text-xl text-dark-900 dark:text-white">Vibai Innovixs</span> */}
             </Link>
-            <p className="text-dark-600 dark:text-dark-400 mb-4">
+            {/* <p className="text-dark-600 dark:text-dark-400 mb-4">
               No Interview. No Degree. No English. Just Skills. Just Salary.
             </p>
             <p className="text-sm text-dark-500 dark:text-dark-400 mb-4">
               Empowering careers through VCAP (Vibai Career Assurance Programme) and Vstart Internship programs.
-            </p>
+            </p> */}
             {/* Social links */}
             <div className="flex space-x-4 mt-4">
               {['Github', 'Linkedin', 'Twitter', 'Instagram'].map((social) => (
