@@ -1,11 +1,14 @@
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react'; // 1. Import useRef
 import { motion } from 'framer-motion';
+import HCaptcha from "@hcaptcha/react-hcaptcha"; // 2. Import HCaptcha
 import AnimatedSection from '../components/ui/AnimatedSection';
 import { MapPin, Mail, Phone, MessageSquare, Send } from 'lucide-react';
 
 const Contact: React.FC = () => {
   const [status, setStatus] = useState('');
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [captchaToken, setCaptchaToken] = useState<string | null>(null); // 3. Add state for the CAPTCHA token
+  const captchaRef = useRef<HCaptcha>(null); // Create a ref to reset the CAPTCHA
 
   const [formData, setFormData] = useState({
     name: '',
@@ -15,7 +18,7 @@ const Contact: React.FC = () => {
     programme: '',
     subject: '',
     message: '',
-    access_key: "d57ffdba-0015-4c25-b43a-d02e47856893" // Make sure this is your correct key
+    access_key: "d57ffdba-0015-4c25-b43a-d02e47856893"
   });
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
@@ -25,8 +28,20 @@ const Contact: React.FC = () => {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    
+    if (!captchaToken) {
+        setStatus("Please complete the CAPTCHA verification.");
+        return; 
+    }
+
     setIsSubmitting(true);
     setStatus("Sending....");
+
+    // --- Create a new object to send, including the hCaptcha response token ---
+    const dataToSend = {
+      ...formData,
+      "h-captcha-response": captchaToken,
+    };
 
     try {
       const response = await fetch("https://api.web3forms.com/submit", {
@@ -35,7 +50,8 @@ const Contact: React.FC = () => {
           "Content-Type": "application/json",
           Accept: "application/json",
         },
-        body: JSON.stringify(formData),
+        // --- Send the new object with the token ---
+        body: JSON.stringify(dataToSend),
       });
 
       const result = await response.json();
@@ -50,8 +66,10 @@ const Contact: React.FC = () => {
             programme: '',
             subject: '',
             message: '',
-            access_key: "YOUR_ACCESS_KEY_HERE"
+            access_key: "d57ffdba-0015-4c25-b43a-d02e47856893"
         });
+        captchaRef.current?.resetCaptcha();
+        setCaptchaToken(null);
       } else {
         console.error("Submission Error:", result);
         setStatus(result.message);
@@ -279,6 +297,16 @@ const Contact: React.FC = () => {
                         )}
                       </div>
                     ))}
+
+                    {/* Use the hCaptcha Test Site Key for local development */}
+                    <div className="my-4">
+                        <HCaptcha
+                            // IMPORTANT: This is a test key. Replace with your REAL site key before deploying your website.
+                            sitekey="a5fab440-7aec-4ab4-9d06-fe10d822584e"
+                            onVerify={setCaptchaToken}
+                            ref={captchaRef}
+                        />
+                    </div>
                     
                     <div className="pt-2">
                       <button 
