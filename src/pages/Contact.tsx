@@ -42,14 +42,14 @@ const Contact: React.FC = () => {
     { 
       icon: <Mail className="h-6 w-6 text-primary-500" />, 
       title: 'Email Us',
-      value: 'contact@vibaiinnovixs.com',
-      action: 'mailto:contact@vibaiinnovixs.com'
+      value: 'contact@vibai-innovixs.com',
+      action: 'mailto:contact@vibai-innovixs.com'
     },
     { 
       icon: <Phone className="h-6 w-6 text-primary-500" />, 
       title: 'Call Us',
-      value: '+91 98765 43210',
-      action: 'tel:+919876543210'
+      value: '+91 98765 XXXXX',
+      action: 'tel:+9198765XXXXX'
     },
     { 
       icon: <MessageSquare className="h-6 w-6 text-primary-500" />, 
@@ -178,15 +178,15 @@ const Contact: React.FC = () => {
                     {[
                       { 
                         icon: <Phone className="h-5 w-5" />, 
-                        text: "+91 98765 43210"
+                        text: "+91 98765 XXXXX"
                       },
                       { 
                         icon: <Mail className="h-5 w-5" />, 
-                        text: "contact@vibaiinnovixs.com"
+                        text: "contact@vibai-innovixs.com"
                       },
                       { 
                         icon: <MapPin className="h-5 w-5" />, 
-                        text: "123 Innovation Street, Bangalore, Karnataka, India"
+                        text: "Madhapur, Hyderabad, Telangana, India"
                       }
                     ].map((item, index) => (
                       <div key={index} className="flex items-start">
