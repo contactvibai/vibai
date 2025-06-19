@@ -321,8 +321,8 @@ const About: React.FC = () => {
                       </div>
                       
                       <div className="mt-6">
-                        <Button href="/contact" fullWidth>
-                          View All Positions
+                        <Button href="/contact#form" fullWidth>
+                          Contact for Positions
                         </Button>
                       </div>
                     </div>
