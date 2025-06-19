@@ -1,10 +1,12 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import AnimatedSection from '../components/ui/AnimatedSection';
-import Button from '../components/ui/Button';
-import { MapPin, Mail, Phone, MessageSquare, Send, ArrowUpRight } from 'lucide-react';
+import { MapPin, Mail, Phone, MessageSquare, Send } from 'lucide-react';
 
 const Contact: React.FC = () => {
+  const [status, setStatus] = useState('');
+  const [isSubmitting, setIsSubmitting] = useState(false);
+
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -12,7 +14,8 @@ const Contact: React.FC = () => {
     division: '',
     programme: '',
     subject: '',
-    message: ''
+    message: '',
+    access_key: "d57ffdba-0015-4c25-b43a-d02e47856893" // Make sure this is your correct key
   });
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
@@ -20,22 +23,45 @@ const Contact: React.FC = () => {
     setFormData(prev => ({ ...prev, [name]: value }));
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    // Form submission logic would go here
-    console.log('Form submitted:', formData);
-    alert('Thank you for your message! We will get back to you soon.');
-    
-    // Reset form
-    setFormData({
-      name: '',
-      email: '',
-      phone: '',
-      division: '',
-      programme: '',
-      subject: '',
-      message: ''
-    });
+    setIsSubmitting(true);
+    setStatus("Sending....");
+
+    try {
+      const response = await fetch("https://api.web3forms.com/submit", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json",
+        },
+        body: JSON.stringify(formData),
+      });
+
+      const result = await response.json();
+
+      if (result.success) {
+        setStatus("Form Submitted Successfully!");
+        setFormData({
+            name: '',
+            email: '',
+            phone: '',
+            division: '',
+            programme: '',
+            subject: '',
+            message: '',
+            access_key: "YOUR_ACCESS_KEY_HERE"
+        });
+      } else {
+        console.error("Submission Error:", result);
+        setStatus(result.message);
+      }
+    } catch (error) {
+      console.error("Network or other error:", error);
+      setStatus("An error occurred. Please try again.");
+    } finally {
+        setIsSubmitting(false);
+    }
   };
 
   const contactMethods = [
@@ -255,10 +281,24 @@ const Contact: React.FC = () => {
                     ))}
                     
                     <div className="pt-2">
-                      <Button type="submit" size="lg">
-                        Send Message <Send className="ml-2 h-5 w-5" />
-                      </Button>
+                      <button 
+                        type="submit" 
+                        disabled={isSubmitting}
+                        className="inline-flex items-center justify-center px-6 py-3 border border-transparent text-base font-medium rounded-md shadow-sm text-white bg-primary-600 hover:bg-primary-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary-500 transition-colors duration-300 disabled:bg-primary-300 disabled:cursor-not-allowed"
+                      >
+                        {isSubmitting ? 'Sending...' : 'Send Message'}
+                        {!isSubmitting && <Send className="ml-2 h-5 w-5" />}
+                      </button>
                     </div>
+
+                    {status && (
+                        <p className={`text-center mt-4 p-3 rounded-lg ${
+                            status.includes("Successfully") ? "bg-green-100 dark:bg-green-900/30 text-green-700 dark:text-green-300" 
+                            : "bg-red-100 dark:bg-red-900/30 text-red-700 dark:text-red-300"
+                        }`}>
+                            {status}
+                        </p>
+                    )}
                   </form>
                 </AnimatedSection>
               </div>
@@ -266,67 +306,6 @@ const Contact: React.FC = () => {
           </div>
         </div>
       </section>
-
-      {/* Map & Locations Section */}
-     {/* <section className="py-16 md:py-24 relative bg-dark-50 dark:bg-dark-900/30">
-        <div className="container mx-auto px-4">
-          <AnimatedSection delay={0.1} direction="up" className="text-center mb-16">
-            <h2 className="text-3xl md:text-4xl font-display font-bold mb-6">
-              Our <span className="text-gradient">Locations</span>
-            </h2>
-            <p className="text-xl text-dark-600 dark:text-dark-300 max-w-3xl mx-auto">
-              While we operate primarily remotely, we have physical offices in major tech hubs across India.
-            </p>
-          </AnimatedSection>
-
-          <div className="bg-white dark:bg-dark-900 rounded-2xl overflow-hidden shadow-xl dark:shadow-dark-900/30 border border-dark-200 dark:border-dark-700">
-            <div className="aspect-video w-full bg-dark-200 dark:bg-dark-800 relative">
-              {/* Placeholder for a map 
-              <div className="absolute inset-0 bg-dark-100 dark:bg-dark-800 flex items-center justify-center">
-                <div className="text-dark-500 dark:text-dark-400 text-center">
-                  <p className="mb-4">Interactive Map would be displayed here</p>
-                  <p className="text-sm">For demo purposes, a real map integration is not shown</p>
-                </div>
-              </div>
-            </div>
-            
-            <div className="p-6 md:p-8">
-              <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-                {['Bangalore', 'Hyderabad', 'Pune'].map((location) => (
-                  <motion.div 
-                    key={location}
-                    className="hover-card p-4 rounded-lg border border-dark-200 dark:border-dark-700"
-                    whileHover={{ y: -5 }}
-                  >
-                    <div className="flex items-start">
-                      <div className="mr-3 mt-1">
-                        <div className="p-2 bg-primary-100 dark:bg-primary-900/20 rounded-lg text-primary-500">
-                          <MapPin className="h-5 w-5" />
-                        </div>
-                      </div>
-                      <div>
-                        <h3 className="font-display font-semibold text-lg mb-1">
-                          {location}
-                        </h3>
-                        <p className="text-dark-600 dark:text-dark-400 text-sm mb-2">
-                          123 Tech Park, {location} - 500001
-                        </p>
-                        <a 
-                          href="#" 
-                          className="text-primary-500 hover:text-primary-600 text-sm font-medium inline-flex items-center"
-                        >
-                          Get Directions
-                          <ArrowUpRight className="ml-1 h-3 w-3" />
-                        </a>
-                      </div>
-                    </div>
-                  </motion.div>
-                ))}
-              </div>
-            </div>
-          </div>
-        </div>
-      </section> */}
 
       {/* FAQ Section */}
       <section id="faq"  className="py-16 md:py-24 relative">
@@ -400,9 +379,9 @@ const Contact: React.FC = () => {
             <p className="text-dark-600 dark:text-dark-300 mb-6">
               Still have questions? Reach out to our team directly.
             </p>
-            <Button href="#form" variant="outline">
+            <a href="#form" className="inline-block px-6 py-3 border border-primary-500 text-primary-500 font-medium rounded-md hover:bg-primary-500 hover:text-white transition-colors duration-300">
               Contact Support Team
-            </Button>
+            </a>
           </AnimatedSection>
         </div>
       </section>
