@@ -45,7 +45,7 @@ const Contact: React.FC = () => {
     programme: '',
     subject: '',
     message: '',
-    access_key: "YOUR_WEB3FORMS_ACCESS_KEY_HERE"
+    access_key: "d57ffdba-0015-4c25-b43a-d02e47856893"
   });
 
   // --- Setup reCAPTCHA Verifier for Phone Auth (Runs only ONCE) ---
