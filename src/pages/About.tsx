@@ -322,7 +322,7 @@ const About: React.FC = () => {
                       
                       <div className="mt-6">
                         <Button href="/contact#form" fullWidth>
-                          Contact for Positions
+                          Get for more info
                         </Button>
                       </div>
                     </div>
