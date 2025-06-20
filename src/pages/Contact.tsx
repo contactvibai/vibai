@@ -99,7 +99,7 @@ const Contact: React.FC = () => {
 
       try {
           await emailjs.send(
-              "service_nzifwpj", 
+              "service_ut0w2ag", 
               "template_d2jx9js",
               templateParams,
               "G6YX_DEesHB3zRrWa"
@@ -238,7 +238,6 @@ const Contact: React.FC = () => {
     { value: 'other', label: 'Other Inquiry' }
   ];
   
-  // Reordered the form fields
   const formFields = [
     { name: 'name', label: 'Your Name', type: 'text', placeholder: 'Enter your full name', required: true },
     { name: 'phone', label: 'Phone Number', type: 'tel', placeholder: '919876543210', required: false },
@@ -254,6 +253,7 @@ const Contact: React.FC = () => {
     <>
       <div id="recaptcha-container"></div> {/* Firebase reCAPTCHA container */}
       <section id="hero" className="py-20 md:py-28 relative overflow-hidden">
+        {/* ... Hero Section JSX remains the same ... */}
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto text-center">
             <AnimatedSection delay={0.1} direction="up">
@@ -337,13 +337,15 @@ const Contact: React.FC = () => {
                   
                   <form onSubmit={handleSubmit} className="space-y-6">
                     {formFields.map((field) => {
-                      // Conditional rendering for special fields with OTP
+                      const baseClasses = "w-full px-4 py-3 border rounded-lg bg-white dark:bg-dark-800 text-dark-900 dark:text-white border-dark-300 dark:border-dark-700 placeholder-dark-400 focus:ring-2 focus:ring-primary-500 focus:border-primary-500";
+                      const autofillClasses = "dark:autofill:bg-dark-800 dark:autofill:text-white";
+
                       if (field.name === 'email') {
                         return (
                           <div key={field.name}>
                               <label htmlFor="email" className="block text-dark-700 dark:text-dark-300 font-medium mb-2">Email Address <span className="text-error-500">*</span></label>
                               <div className="flex items-center space-x-2">
-                                  <input type="email" id="email" name="email" value={formData.email} onChange={handleChange} placeholder="your.email@example.com" required disabled={emailOtpSent || isEmailVerified} className="w-full px-4 py-3 border rounded-lg disabled:bg-gray-100 dark:disabled:bg-dark-800" />
+                                  <input type="email" id="email" name="email" value={formData.email} onChange={handleChange} placeholder="your.email@example.com" required disabled={emailOtpSent || isEmailVerified} className={`${baseClasses} ${autofillClasses} disabled:bg-gray-100 dark:disabled:bg-dark-800`} />
                                   {!isEmailVerified ? (
                                       <button type="button" onClick={handleSendEmailOtp} disabled={emailOtpSent} className="px-4 py-3 bg-gray-200 dark:bg-dark-700 rounded-lg disabled:opacity-50 whitespace-nowrap">Send OTP</button>
                                   ) : (
@@ -359,7 +361,7 @@ const Contact: React.FC = () => {
                                   <div className='mt-4'>
                                       <label htmlFor="emailOtp" className="block font-medium mb-2">Enter Email OTP</label>
                                       <div className="flex items-center space-x-2">
-                                          <input type="text" id="emailOtp" value={emailOtp} onChange={(e) => setEmailOtp(e.target.value)} placeholder="6-digit code" className="w-full px-4 py-3 border rounded-lg" />
+                                          <input type="text" id="emailOtp" value={emailOtp} onChange={(e) => setEmailOtp(e.target.value)} placeholder="6-digit code" className={`${baseClasses} ${autofillClasses}`} />
                                           <button type="button" onClick={handleVerifyEmailOtp} className="px-4 py-3 bg-primary-500 text-white rounded-lg whitespace-nowrap">Verify</button>
                                       </div>
                                   </div>
@@ -372,7 +374,7 @@ const Contact: React.FC = () => {
                            <div key={field.name}>
                               <label htmlFor="phone" className="block text-dark-700 dark:text-dark-300 font-medium mb-2">Phone Number</label>
                               <div className="flex items-center space-x-2">
-                                  <input type="tel" id="phone" name="phone" value={formData.phone} onChange={handleChange} placeholder="919876543210" disabled={phoneOtpSent || isPhoneVerified} className="w-full px-4 py-3 border border-dark-300 dark:border-dark-700 rounded-lg disabled:bg-gray-100 dark:disabled:bg-dark-800" />
+                                  <input type="tel" id="phone" name="phone" value={formData.phone} onChange={handleChange} placeholder="919876543210" disabled={phoneOtpSent || isPhoneVerified} className={`${baseClasses} ${autofillClasses} disabled:bg-gray-100 dark:disabled:bg-dark-800`} />
                                   {!isPhoneVerified ? (
                                       <button type="button" onClick={handleSendPhoneOtp} disabled={phoneOtpSent} className="px-4 py-3 bg-gray-200 dark:bg-dark-700 rounded-lg disabled:opacity-50 whitespace-nowrap">Send OTP</button>
                                   ) : (
@@ -388,7 +390,7 @@ const Contact: React.FC = () => {
                                   <div className='mt-4'>
                                       <label htmlFor="phoneOtp" className="block font-medium mb-2">Enter Phone OTP</label>
                                       <div className="flex items-center space-x-2">
-                                          <input type="text" id="phoneOtp" value={phoneOtp} onChange={(e) => setPhoneOtp(e.target.value)} placeholder="6-digit code" className="w-full px-4 py-3 border rounded-lg" />
+                                          <input type="text" id="phoneOtp" value={phoneOtp} onChange={(e) => setPhoneOtp(e.target.value)} placeholder="6-digit code" className={`${baseClasses} ${autofillClasses}`} />
                                           <button type="button" onClick={handleVerifyPhoneOtp} className="px-4 py-3 bg-primary-500 text-white rounded-lg whitespace-nowrap">Verify</button>
                                       </div>
                                   </div>
@@ -407,13 +409,13 @@ const Contact: React.FC = () => {
                                 id={field.name} name={field.name} value={formData[field.name as keyof typeof formData]}
                                 onChange={handleChange} placeholder={field.placeholder} required={field.required}
                                 rows={5}
-                                className="w-full px-4 py-3 border border-dark-300 dark:border-dark-700 rounded-lg"
+                                className={`${baseClasses} ${autofillClasses}`}
                             />
                             ) : field.type === 'select' ? (
                             <select
                                 id={field.name} name={field.name} value={formData[field.name as keyof typeof formData]}
                                 onChange={handleChange} required={field.required}
-                                className="w-full px-4 py-3 border border-dark-300 dark:border-dark-700 rounded-lg"
+                                className={`${baseClasses}`}
                             >
                                 {field.options?.map((option) => (
                                 <option key={option.value} value={option.value}>{option.label}</option>
@@ -423,7 +425,7 @@ const Contact: React.FC = () => {
                               <input
                                   type={field.type} id={field.name} name={field.name} value={formData[field.name as keyof typeof formData]}
                                   onChange={handleChange} placeholder={field.placeholder} required={field.required}
-                                  className="w-full px-4 py-3 border border-dark-300 dark:border-dark-700 rounded-lg"
+                                  className={`${baseClasses} ${autofillClasses}`}
                               />
                             )}
                         </div>
@@ -452,7 +454,66 @@ const Contact: React.FC = () => {
         </div>
       </section>
 
-      {/* ... FAQ Section JSX remains the same ... */}
+      {/* --- Restored FAQ Section --- */}
+      <section id="faq"  className="py-16 md:py-24 relative">
+        <div className="container mx-auto px-4">
+          <AnimatedSection delay={0.1} direction="up" className="text-center mb-16">
+            <h2 className="text-3xl md:text-4xl font-display font-bold mb-6">
+              Frequently Asked <span className="text-gradient">Questions</span>
+            </h2>
+            <p className="text-xl text-dark-600 dark:text-dark-300 max-w-3xl mx-auto">
+              Find answers to common questions about our programmes and application process.
+            </p>
+          </AnimatedSection>
+
+          <div className="max-w-4xl mx-auto space-y-6">
+            {[
+              { question: "Do I need any specific educational qualifications to apply?", answer: "We don’t require any specific degrees. If you have the aptitude, passion, and a minimum of 15 years of basic education, you’re eligible — no formal qualifications needed." },
+              { question: "How good does my English need to be?", answer: "You don't need to be fluent in English. Basic communication skills are enough, and you can work and learn in your preferred language." },
+              { question: "Is the work 100% remote?", answer: "Yes, all our positions are fully remote. You can work from anywhere in India with a stable internet connection." },
+              { question: "What if I have zero technical knowledge?", answer: "We look for aptitude and learning ability rather than existing knowledge. Our comprehensive training will teach you everything you need to succeed." },
+              { question: "When do I get paid?", answer: "You start receiving your salary (₹15,000/month for VCAP or ₹4,000/month for Vstart internships) from the very first month, not after training." },
+              { question: "What's the difference between VCAP and Vstart?", answer: "VCAP is our full-time Career Assurance Programme for freshers (₹15,000/month), while Vstart is our part-time Internship Programme for college students (₹4,000/month)." }
+            ].map((faq, index) => (
+              <AnimatedSection
+                key={index}
+                delay={0.2 + index * 0.1}
+                className="bg-white dark:bg-dark-900 rounded-xl p-6 shadow-md dark:shadow-dark-900/20 border border-dark-200 dark:border-dark-700"
+              >
+                <details className="group">
+                  <summary className="flex justify-between items-center font-display text-lg font-semibold cursor-pointer list-none">
+                    {faq.question}
+                    <span className="transition group-open:rotate-180">
+                      <svg 
+                        xmlns="http://www.w3.org/2000/svg" 
+                        fill="none" 
+                        viewBox="0 0 24 24" 
+                        strokeWidth={1.5} 
+                        stroke="currentColor" 
+                        className="w-6 h-6"
+                      >
+                        <path strokeLinecap="round" strokeLinejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5" />
+                      </svg>
+                    </span>
+                  </summary>
+                  <div className="mt-4 text-dark-600 dark:text-dark-300">
+                    {faq.answer}
+                  </div>
+                </details>
+              </AnimatedSection>
+            ))}
+          </div>
+
+          <AnimatedSection delay={0.6} direction="up" className="text-center mt-12">
+            <p className="text-dark-600 dark:text-dark-300 mb-6">
+              Still have questions? Reach out to our team directly.
+            </p>
+            <a href="#form" className="inline-block px-6 py-3 border border-primary-500 text-primary-500 font-medium rounded-md hover:bg-primary-500 hover:text-white transition-colors duration-300">
+              Contact Support Team
+            </a>
+          </AnimatedSection>
+        </div>
+      </section>
     </>
   );
 };
