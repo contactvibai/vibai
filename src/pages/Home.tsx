@@ -491,7 +491,7 @@ const Home: React.FC = () => {
                           <TrendingUp className="h-8 w-8 text-primary-500" />
                         </div>
                         <div>
-                          <h4 className="text-xl font-semibold">Your Effort > Your Resume</h4>
+                          <h4 className="text-xl font-semibold">Your Effort &gt; Your Resume</h4>
                           <p className="text-dark-600 dark:text-dark-400 text-sm">Potential over papers</p>
                         </div>
                       </div>
@@ -566,7 +566,7 @@ const Home: React.FC = () => {
               <AnimatedSection delay={0.2} direction="left">
                 <div className="rounded-2xl overflow-hidden shadow-xl dark:shadow-dark-900/30 bg-white dark:bg-dark-900 border border-dark-200 dark:border-dark-700">
                   <div className="p-8">
-                    <div className      ="inline-flex items-center px-4 py-2 bg-primary-100 dark:bg-primary-900/20 text-primary-600 dark:text-primary-300 rounded-full mb-6">
+                    <div className="inline-flex items-center px-4 py-2 bg-primary-100 dark:bg-primary-900/20 text-primary-600 dark:text-primary-300 rounded-full mb-6">
                       <GraduationCap className="h-5 w-5 mr-2" />
                       <span className="font-medium">Vstart Internship Programme</span>
                     </div>
