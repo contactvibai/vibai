@@ -6,7 +6,7 @@ import AnimatedSection from '../components/ui/AnimatedSection';
 import { HashLink } from 'react-router-hash-link';
 import ParallaxElement from '../components/ui/ParallaxElement';
 import Button from '../components/ui/Button';
-import { ArrowRight, GraduationCap, Home as HomeIcon, Briefcase, CheckCircle, Code as CodeXml, Cpu, Users, ExternalLink } from 'lucide-react';
+import { ArrowRight, GraduationCap, Home as HomeIcon, Briefcase, CheckCircle, Code as CodeXml, Cpu, Users, ExternalLink, Target, TrendingUp, Award, Zap } from 'lucide-react';
 
 const Home: React.FC = () => {
   const { prefersReducedMotion } = useMotion();
@@ -121,10 +121,10 @@ const Home: React.FC = () => {
 
   const staggerDelay = 0.3;
   const textHighlights = [
-    { text: "No Interview", color: "bg-red-500/20" },
-    { text: "No Degree", color: "bg-blue-500/20" },
-    { text: "No English", color: "bg-green-500/20" },
-    { text: "No Skills", color: "bg-purple-500/20" }
+    { text: "No Interview Conducted", color: "bg-red-500/20", textColor: "text-red-600 dark:text-red-400" },
+    { text: "No Degree Asked", color: "bg-blue-500/20", textColor: "text-blue-600 dark:text-blue-400" },
+    { text: "No English Required", color: "bg-green-500/20", textColor: "text-green-600 dark:text-green-400" },
+    { text: "No Skills Mandatory", color: "bg-purple-500/20", textColor: "text-purple-600 dark:text-purple-400" }
   ];
 
   // Success metrics for startup
@@ -166,7 +166,9 @@ const Home: React.FC = () => {
                           </motion.div>
                         )}
                       </AnimatePresence>
-                      <span className="relative z-10 px-2">{highlight.text}</span>
+                      <span className={`relative z-10 px-2 ${currentTextHighlight === index ? highlight.textColor : ''}`}>
+                        {highlight.text}
+                      </span>
                     </motion.span>
                   ))}
 
@@ -176,7 +178,7 @@ const Home: React.FC = () => {
                     transition={{ delay: 4 * staggerDelay, duration: 0.5 }}
                     className="text-gradient mt-4"
                   >
-                    Only Effort and Passion.
+                    Only Passion. Effort.
                   </motion.div>
                 </h1>
               </AnimatedSection>
@@ -368,116 +370,184 @@ const Home: React.FC = () => {
         </div>
       </section> */}
 
-      {/* For Freshers Section */}
-      <section className="pt-0 pb-20  relative">
-        <div className="container mx-auto px-4">
+      {/* For Freshers Section - Redesigned */}
+      <section className="py-20 relative overflow-hidden">
+        <div className="absolute inset-0 bg-gradient-to-br from-accent-500/5 via-transparent to-primary-500/5"></div>
+        
+        <div className="container mx-auto px-4 relative">
           <AnimatedSection delay={0.1} direction="up" className="text-center mb-16">
-            <h2 className="text-3xl md:text-4xl font-display font-bold mb-4">
-              For <span className="text-gradient">Freshers</span>
+            <div className="inline-flex items-center px-6 py-3 bg-accent-100 dark:bg-accent-900/20 text-accent-600 dark:text-accent-300 rounded-full mb-6">
+              <Target className="h-5 w-5 mr-2" />
+              <span className="font-medium">For Freshers</span>
+            </div>
+            <h2 className="text-3xl md:text-4xl lg:text-5xl font-display font-bold mb-6">
+              Break the <span className="text-gradient">"No Experience"</span> Cycle
             </h2>
-            <p className="text-xl text-dark-600 dark:text-dark-300 max-w-3xl mx-auto">
-              Struggling to get your first job? Start your career journey with our <strong>VCAP - Vibai Career Assurance Programme</strong>.
+            <p className="text-xl text-dark-600 dark:text-dark-300 max-w-4xl mx-auto">
+              Tired of rejections? Start your career journey with our <strong>VCAP - Vibai Career Assurance Programme</strong>. 
+              We hire first, train comprehensively, and pay you from day one.
             </p>
           </AnimatedSection>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
-             <div>
-              <AnimatedSection delay={0.4} direction="right" className="space-y-6">
-                <div className="bg-white dark:bg-dark-900 border border-dark-200 dark:border-dark-700 rounded-xl p-6 hover-card">
-                  <div className="flex">
-                    <div className="mr-4">
-                      <div className="p-3 bg-primary-100 dark:bg-primary-900/20 text-primary-500 rounded-lg">
-                        <Briefcase size={24} />
+
+          <div className="max-w-7xl mx-auto">
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+              {/* Left Side - Main Content */}
+              <div className="space-y-8">
+                <AnimatedSection delay={0.2} direction="left">
+                  <div className="bg-white dark:bg-dark-900 rounded-2xl p-8 shadow-xl dark:shadow-dark-900/30 border border-dark-200 dark:border-dark-700 relative overflow-hidden">
+                    <div className="absolute top-0 right-0 w-32 h-32 bg-accent-500/10 rounded-full -mr-16 -mt-16"></div>
+                    
+                    <div className="relative">
+                      <div className="flex items-center mb-6">
+                        <div className="p-3 bg-accent-100 dark:bg-accent-900/20 rounded-lg mr-4">
+                          <Briefcase className="h-8 w-8 text-accent-500" />
+                        </div>
+                        <div>
+                          <h3 className="text-2xl font-display font-bold">VCAP Programme</h3>
+                          <p className="text-accent-600 dark:text-accent-400 font-medium">Career Assurance for Freshers</p>
+                        </div>
                       </div>
-                    </div>
-                    <div>
-                      <h4 className="text-lg font-semibold mb-1">Real Work. Real Growth.</h4>
-                      <p className="text-dark-600 dark:text-dark-400">
-                        From day one, you’ll be part of real projects used by actual customers. No fake tasks. No fluff. Just hands-on learning and real contributions.
+                      
+                      <p className="text-lg text-dark-600 dark:text-dark-400 mb-6">
+                        From day one, you'll be part of real projects used by actual customers. No fake tasks. 
+                        No fluff. Just hands-on learning and real contributions that matter.
                       </p>
-                    </div>
-                  </div>
-                </div>
-                
-                <div className="bg-white dark:bg-dark-900 border border-dark-200 dark:border-dark-700 rounded-xl p-6 hover-card">
-                  <div className="flex">
-                    <div className="mr-4">
-                      <div className="p-3 bg-primary-100 dark:bg-primary-900/20 text-primary-500 rounded-lg">
-                        <Users size={24} />
+                      
+                      <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-6">
+                        <div className="flex items-center p-3 bg-success-50 dark:bg-success-900/10 rounded-lg">
+                          <CheckCircle className="h-5 w-5 text-success-500 mr-3" />
+                          <span className="font-medium">₹15,000/month</span>
+                        </div>
+                        <div className="flex items-center p-3 bg-primary-50 dark:bg-primary-900/10 rounded-lg">
+                          <CheckCircle className="h-5 w-5 text-primary-500 mr-3" />
+                          <span className="font-medium">100% Remote</span>
+                        </div>
+                        <div className="flex items-center p-3 bg-accent-50 dark:bg-accent-900/10 rounded-lg">
+                          <CheckCircle className="h-5 w-5 text-accent-500 mr-3" />
+                          <span className="font-medium">Real Projects</span>
+                        </div>
+                        <div className="flex items-center p-3 bg-secondary-50 dark:bg-secondary-900/10 rounded-lg">
+                          <CheckCircle className="h-5 w-5 text-secondary-500 mr-3" />
+                          <span className="font-medium">Guided Training</span>
+                        </div>
                       </div>
-                    </div>
-                    <div>
-                      <h4 className="text-lg font-semibold mb-1">Your Effort &gt; Your Resume</h4>
-                      <p className="text-dark-600 dark:text-dark-400">
-                        We believe in what you can become—not just what you’ve done. VCAP is your chance to prove yourself, grow fast, and get ahead.
-                      </p>
+                      
+                      <Button href="/contact" variant="secondary" fullWidth size="lg">
+                        Apply for VCAP <ArrowRight className="ml-2 h-5 w-5" />
+                      </Button>
                     </div>
                   </div>
-                </div>
-                
-                <div className="bg-white dark:bg-dark-900 border border-dark-200 dark:border-dark-700 rounded-xl p-6 hover-card">
-                  <div className="flex items-center justify-between">
-                    <div className="flex-1">
-                      <h4 className="text-lg font-semibold mb-1">Hear Their Stories</h4>
-                      <p className="text-dark-600 dark:text-dark-400">
-                       Many before you have broken the “no experience, no job” cycle with VCAP. You can too.
-                      </p>
-                    </div>
-                    <motion.a 
-                      href="/portfolio"
-                      className="p-3 rounded-full bg-dark-100 dark:bg-dark-800 text-dark-700 dark:text-dark-300"
-                      whileHover={{ scale: 1.1, rotate: 15 }}
-                      whileTap={{ scale: 0.9 }}
-                    >
-                      <ExternalLink size={20} />
-                    </motion.a>
-                  </div>
-                </div>
-              </AnimatedSection>
-            </div>
-            <div>
-              <AnimatedSection delay={0.2} direction="left">
-                <div className="rounded-2xl overflow-hidden shadow-xl dark:shadow-dark-900/30 bg-white dark:bg-dark-900 border border-dark-200 dark:border-dark-700">
-                  <div className="p-8">
-                    <div className      ="inline-flex items-center px-4 py-2 bg-accent-100 dark:bg-accent-900/20 text-accent-600 dark:text-accent-300 rounded-full mb-6">
-                      <GraduationCap className="h-5 w-5 mr-2" />
-                      <span className="font-medium">VCAP - Vibai Career Assurance Programme</span>
-                    </div>
-                    
-                    <h3 className="text-2xl font-display font-bold mb-4">
-                      Tired of Rejections for “No Experience”?
-                    </h3>
-                    
-                    <p className="text-dark-600 dark:text-dark-400 mb-6">
-                      With VCAP, you don’t need a fancy degree, job history, or fluent English. We’ll train you on real-world skills and pay you from day one.
-                    </p>
-                    
-                    <div className="space-y-3 mb-6">
-                      {fresherFeatures.map((feature, index) => (
-                        <motion.div 
-                          key={feature.title}
-                          className="flex items-center"
-                          initial={prefersReducedMotion ? {} : { opacity: 0, x: -10 }}
-                          animate={prefersReducedMotion ? {} : { opacity: 1, x: 0 }}
-                          transition={{ duration: 0.3, delay: 0.1 * index }}
+                </AnimatedSection>
+
+                <AnimatedSection delay={0.4} direction="left">
+                  <div className="bg-gradient-to-r from-primary-500 to-accent-500 rounded-2xl p-1 shadow-xl">
+                    <div className="bg-white dark:bg-dark-950 rounded-xl p-6">
+                      <div className="flex items-center justify-between mb-4">
+                        <div>
+                          <h4 className="text-lg font-semibold">Success Stories</h4>
+                          <p className="text-dark-600 dark:text-dark-400 text-sm">
+                            Many before you have broken the cycle
+                          </p>
+                        </div>
+                        <motion.a 
+                          href="/portfolio"
+                          className="p-3 rounded-full bg-primary-100 dark:bg-primary-900/20 text-primary-500"
+                          whileHover={{ scale: 1.1, rotate: 15 }}
+                          whileTap={{ scale: 0.9 }}
                         >
-                          <div className="mr-3">
-                            {feature.icon}
-                          </div>
-                          <p className="font-medium">{feature.title}</p>
-                        </motion.div>
-                      ))}
+                          <ExternalLink size={20} />
+                        </motion.a>
+                      </div>
+                      
+                      <div className="grid grid-cols-3 gap-4 text-center">
+                        <div>
+                          <div className="text-2xl font-bold text-primary-500">150+</div>
+                          <div className="text-xs text-dark-500">Lives Changed</div>
+                        </div>
+                        <div>
+                          <div className="text-2xl font-bold text-success-500">85%</div>
+                          <div className="text-xs text-dark-500">Success Rate</div>
+                        </div>
+                        <div>
+                          <div className="text-2xl font-bold text-accent-500">₹18K</div>
+                          <div className="text-xs text-dark-500">Avg. Salary</div>
+                        </div>
+                      </div>
                     </div>
-                    
-                    <Button href="/contact" variant="secondary" fullWidth>
-                      Apply for VCAP
-                    </Button>
                   </div>
-                </div>
-              </AnimatedSection>
+                </AnimatedSection>
+              </div>
+
+              {/* Right Side - Visual Elements */}
+              <div className="space-y-6">
+                <AnimatedSection delay={0.3} direction="right">
+                  <div className="relative">
+                    <motion.div 
+                      className="bg-white dark:bg-dark-900 rounded-2xl p-8 shadow-xl dark:shadow-dark-900/30 border border-dark-200 dark:border-dark-700"
+                      whileHover={{ y: -5 }}
+                    >
+                      <div className="flex items-center mb-6">
+                        <div className="p-3 bg-primary-100 dark:bg-primary-900/20 rounded-lg mr-4">
+                          <TrendingUp className="h-8 w-8 text-primary-500" />
+                        </div>
+                        <div>
+                          <h4 className="text-xl font-semibold">Your Effort > Your Resume</h4>
+                          <p className="text-dark-600 dark:text-dark-400 text-sm">Potential over papers</p>
+                        </div>
+                      </div>
+                      <p className="text-dark-600 dark:text-dark-400">
+                        We believe in what you can become—not just what you've done. VCAP is your chance to prove yourself, grow fast, and get ahead.
+                      </p>
+                    </motion.div>
+                  </div>
+                </AnimatedSection>
+
+                <AnimatedSection delay={0.5} direction="right">
+                  <div className="relative">
+                    <motion.div 
+                      className="bg-white dark:bg-dark-900 rounded-2xl p-8 shadow-xl dark:shadow-dark-900/30 border border-dark-200 dark:border-dark-700"
+                      whileHover={{ y: -5 }}
+                    >
+                      <div className="flex items-center mb-6">
+                        <div className="p-3 bg-accent-100 dark:bg-accent-900/20 rounded-lg mr-4">
+                          <Award className="h-8 w-8 text-accent-500" />
+                        </div>
+                        <div>
+                          <h4 className="text-xl font-semibold">Real Work. Real Growth.</h4>
+                          <p className="text-dark-600 dark:text-dark-400 text-sm">No fake projects</p>
+                        </div>
+                      </div>
+                      <p className="text-dark-600 dark:text-dark-400">
+                        From day one, you'll contribute to products used by real customers. Build your portfolio with meaningful work that showcases your capabilities.
+                      </p>
+                    </motion.div>
+                  </div>
+                </AnimatedSection>
+
+                <AnimatedSection delay={0.6} direction="right">
+                  <div className="relative">
+                    <motion.div 
+                      className="bg-gradient-to-br from-secondary-500 to-primary-500 rounded-2xl p-8 text-white shadow-xl"
+                      whileHover={{ scale: 1.02 }}
+                    >
+                      <div className="flex items-center mb-4">
+                        <Zap className="h-8 w-8 mr-3" />
+                        <h4 className="text-xl font-semibold">Ready to Start?</h4>
+                      </div>
+                      <p className="mb-6 opacity-90">
+                        Join thousands who've launched their careers through VCAP. Your journey begins with a single step.
+                      </p>
+                      <Button href="/contact" variant="outline" className="border-white text-white hover:bg-white hover:text-primary-500">
+                        Apply Now
+                      </Button>
+                    </motion.div>
+                  </div>
+                </AnimatedSection>
+              </div>
             </div>
           </div>
         </div>
-      </section> 
+      </section>
 
       {/* For Students Section */}
       <section className="py-20 relative">
