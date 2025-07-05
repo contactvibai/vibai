@@ -1,12 +1,30 @@
-import React from 'react';
-import { motion } from 'framer-motion';
+import React, { useState, useEffect } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
 import AnimatedSection from '../components/ui/AnimatedSection';
 import ParallaxElement from '../components/ui/ParallaxElement';
 import Button from '../components/ui/Button';
-// import teamImage from '../assets/team_image.webp';
-import { ArrowRight, CheckCircle, GraduationCap, Briefcase, Building2, Code, Cpu, Wrench, Users } from 'lucide-react';
+import { ArrowRight, CheckCircle, GraduationCap, Briefcase, Building2, Code, Cpu, Wrench, Users, Zap, Sparkles, Rocket, Clock, Target } from 'lucide-react';
 
 const Services: React.FC = () => {
+  const [currentPathIndex, setCurrentPathIndex] = useState(0);
+  const [currentCompanyFeature, setCurrentCompanyFeature] = useState(0);
+
+  // Cycle through career paths
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentPathIndex((prev) => (prev + 1) % 3);
+    }, 4000);
+    return () => clearInterval(interval);
+  }, []);
+
+  // Cycle through company features
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentCompanyFeature((prev) => (prev + 1) % 3);
+    }, 3500);
+    return () => clearInterval(interval);
+  }, []);
+
   const programFeatures = [
     {
       icon: <CheckCircle className="h-6 w-6 text-success-500" />,
@@ -42,21 +60,45 @@ const Services: React.FC = () => {
       skills: ["AI Web Developer", "Front-End AI Engineer", "Smart UI Builder", "AI Mobile App Developer", "Smart App Engineer", "Cross-Platform AI Coder", "ML Model Developer",
         "AI Solutions Engineer","Data & Intelligence Engineer","Cloud AI Engineer","DevOps & Automation Specialist","Cloud Infrastructure Developer","AI Backend Developer","API & Systems Engineer",
         "Logic Automation Developer"
-      ]
+      ],
+      color: "from-blue-500 to-purple-500"
     },
     {
       icon: <Cpu className="h-16 w-16 text-primary-500" />,
       title: "Electronics",
       description: "Master electronic design, PCB layout, embedded systems programming, and IoT device development.",
       skills: ["AI Circuit Architect","Smart Circuit Designer","Ai Logic Circuit Engineer","AI PCB Designer","AutoLayout Engineer","Precision Board Planner","Embedded AI Engineer","AI Firmware Developer",
-"Real-Time Systems Coder","AIoT Systems Engineer","Smart Device Integrator","Connected Systems Developer","AI Test Automation Engineer","Smart Hardware Validator","Diagnostics & Quality AI Engineer"]
+"Real-Time Systems Coder","AIoT Systems Engineer","Smart Device Integrator","Connected Systems Developer","AI Test Automation Engineer","Smart Hardware Validator","Diagnostics & Quality AI Engineer"],
+      color: "from-green-500 to-teal-500"
     },
     {
       icon: <Wrench className="h-16 w-16 text-primary-500" />,
       title: "Mechanical",
       description: "Focus on mechanical design, 3D modeling, CAD/CAM, manufacturing processes, and product development.",
       skills: ["AI 3D Design Specialist","Generative Modeler","Intelligent Shape Architect","AI CAD/CAM Engineer","Smart Machining Designer","Automated Drafting Specialist","AI Product Designer",
-"User-Centric AI Creator","Smart Form & Function Engineer","AI Manufacturing Planner","Intelligent Production Engineer","Smart Factory Integrator","AI Simulation Analyst","Predictive Systems Modeler","Virtual Test Engineer"]
+"User-Centric AI Creator","Smart Form & Function Engineer","AI Manufacturing Planner","Intelligent Production Engineer","Smart Factory Integrator","AI Simulation Analyst","Predictive Systems Modeler","Virtual Test Engineer"],
+      color: "from-orange-500 to-red-500"
+    }
+  ];
+
+  const companyFeatures = [
+    {
+      icon: <Briefcase className="h-12 w-12 text-primary-500" />,
+      title: "Hire VCAP Graduates",
+      description: "Access a pipeline of trained professionals who have proven their skills through real project work.",
+      highlight: "Pre-trained talent pool"
+    },
+    {
+      icon: <Users className="h-12 w-12 text-primary-500" />,
+      title: "Co-develop Training",
+      description: "Work with us to design training programmes tailored to your company's specific technical needs.",
+      highlight: "Custom curriculum design"
+    },
+    {
+      icon: <Building2 className="h-12 w-12 text-primary-500" />,
+      title: "Outsource Projects",
+      description: "Let our teams handle your development needs with quality work at competitive rates.",
+      highlight: "Cost-effective solutions"
     }
   ];
 
@@ -67,6 +109,13 @@ const Services: React.FC = () => {
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto text-center">
             <AnimatedSection delay={0.1} direction="up">
+              <motion.div
+                animate={{ rotate: [0, 360] }}
+                transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
+                className="inline-block mb-6"
+              >
+                <Zap className="h-16 w-16 text-primary-500" />
+              </motion.div>
               <h1 className="text-4xl md:text-5xl lg:text-6xl font-display font-bold mb-6">
                 Our <span className="text-gradient">Programmes</span>
               </h1>
@@ -81,12 +130,16 @@ const Services: React.FC = () => {
         </div>
       </section>
 
-      {/* VCAP Program Section */}
+      {/* VCAP Program Section - Enhanced */}
       <section className="py-16 relative">
         <div className="container mx-auto px-4">
           <div className="flex flex-col lg:flex-row items-center gap-12">
             <div className="lg:w-1/2">
               <AnimatedSection delay={0.2} direction="left">
+                <div className="inline-flex items-center px-4 py-2 bg-accent-100 dark:bg-accent-900/20 text-accent-600 dark:text-accent-300 rounded-full mb-6">
+                  <Target className="h-5 w-5 mr-2" />
+                  <span className="font-medium">For Freshers</span>
+                </div>
                 <h2 className="text-3xl md:text-4xl font-display font-bold mb-6">
                   VCAP - Vibai Career Assurance Programme
                 </h2>
@@ -105,6 +158,7 @@ const Services: React.FC = () => {
                       initial={{ opacity: 0, x: -10 }}
                       animate={{ opacity: 1, x: 0 }}
                       transition={{ delay: 0.1 * index, duration: 0.4 }}
+                      whileHover={{ x: 5 }}
                     >
                       <div className="mr-2">
                         {feature.icon}
@@ -128,11 +182,6 @@ const Services: React.FC = () => {
                   className="relative rounded-2xl overflow-hidden shadow-xl dark:shadow-dark-900/30"
                   whileHover={{ scale: 1.02 }}
                 >
-                  {/* <img 
-                    src={teamImage} 
-                    alt="VCAP Program" 
-                    className="w-full h-96 md:h-[450px] object-cover"
-                  /> */}
                   <img 
                     src="https://images.pexels.com/photos/3182812/pexels-photo-3182812.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2" 
                     alt="VCAP Program" 
@@ -147,13 +196,15 @@ const Services: React.FC = () => {
                         No barriers. Just opportunities.
                       </p>
                       <div className="flex space-x-2">
-                        {['Software', 'Electronics', 'Mechanical'].map(path => (
-                          <span 
+                        {['Software', 'Electronics', 'Mechanical'].map((path, index) => (
+                          <motion.span 
                             key={path} 
                             className="px-3 py-1 bg-white/20 backdrop-blur-sm rounded-full text-sm font-medium"
+                            animate={{ scale: [1, 1.05, 1] }}
+                            transition={{ delay: index * 0.5, duration: 2, repeat: Infinity }}
                           >
                             {path}
-                          </span>
+                          </motion.span>
                         ))}
                       </div>
                     </div>
@@ -165,7 +216,7 @@ const Services: React.FC = () => {
         </div>
       </section>
 
-      {/* Career Paths Section */}
+      {/* Career Paths Section - Enhanced with Dynamic Features */}
       <section className="py-16 md:py-24 relative bg-dark-50 dark:bg-dark-900/30">
         <div className="container mx-auto px-4">
           <AnimatedSection delay={0.1} direction="up" className="text-center mb-16">
@@ -177,6 +228,71 @@ const Services: React.FC = () => {
             </p>
           </AnimatedSection>
 
+          {/* Featured Path Showcase */}
+          <div className="max-w-4xl mx-auto mb-12">
+            <AnimatedSection delay={0.2} direction="up">
+              <div className="bg-white dark:bg-dark-900 rounded-2xl p-8 shadow-xl dark:shadow-dark-900/30 border border-dark-200 dark:border-dark-700 relative overflow-hidden">
+                <div className={`absolute top-0 left-0 w-full h-2 bg-gradient-to-r ${paths[currentPathIndex].color}`}></div>
+                
+                <AnimatePresence mode="wait">
+                  <motion.div
+                    key={currentPathIndex}
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    exit={{ opacity: 0, y: -20 }}
+                    transition={{ duration: 0.5 }}
+                  >
+                    <div className="flex items-center mb-6">
+                      <div className="p-4 bg-primary-100 dark:bg-primary-900/20 rounded-xl mr-6">
+                        {paths[currentPathIndex].icon}
+                      </div>
+                      <div>
+                        <h3 className="text-3xl font-display font-bold">
+                          {paths[currentPathIndex].title}
+                        </h3>
+                        <p className="text-primary-600 dark:text-primary-400 font-medium">
+                          Engineering Track
+                        </p>
+                      </div>
+                    </div>
+                    
+                    <p className="text-lg text-dark-600 dark:text-dark-400 mb-6">
+                      {paths[currentPathIndex].description}
+                    </p>
+                    
+                    <div className="flex flex-wrap gap-2">
+                      {paths[currentPathIndex].skills.slice(0, 8).map(skill => (
+                        <span 
+                          key={skill}
+                          className="px-3 py-1 bg-primary-100 dark:bg-primary-900/20 text-primary-700 dark:text-primary-300 rounded-full text-sm"
+                        >
+                          {skill}
+                        </span>
+                      ))}
+                      <span className="px-3 py-1 bg-dark-100 dark:bg-dark-800 text-dark-600 dark:text-dark-400 rounded-full text-sm">
+                        +{paths[currentPathIndex].skills.length - 8} more
+                      </span>
+                    </div>
+                  </motion.div>
+                </AnimatePresence>
+                
+                {/* Path indicators */}
+                <div className="flex justify-center space-x-2 mt-8">
+                  {paths.map((_, index) => (
+                    <button
+                      key={index}
+                      onClick={() => setCurrentPathIndex(index)}
+                      className={`w-3 h-3 rounded-full transition-colors ${
+                        index === currentPathIndex ? 'bg-primary-500' : 'bg-dark-300 dark:bg-dark-600'
+                      }`}
+                    />
+                  ))}
+                </div>
+              </div>
+            </AnimatedSection>
+          </div>
+
+          {/* All Paths Grid */}
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {paths.map((path, index) => (
               <AnimatedSection
@@ -185,8 +301,9 @@ const Services: React.FC = () => {
                 direction="up"
               >
                 <motion.div 
-                  className="bg-white dark:bg-dark-900 rounded-xl p-8 h-full flex flex-col hover-card relative overflow-hidden"
+                  className="bg-white dark:bg-dark-900 rounded-xl p-8 h-full flex flex-col hover-card relative overflow-hidden cursor-pointer"
                   whileHover={{ y: -5 }}
+                  onClick={() => setCurrentPathIndex(index)}
                 >
                   <div className="absolute top-0 right-0 w-32 h-32 bg-primary-500/5 dark:bg-primary-500/10 rounded-full -mr-16 -mt-16"></div>
                   
@@ -204,17 +321,20 @@ const Services: React.FC = () => {
                   
                   <div className="border-t border-dark-200 dark:border-dark-700 pt-4 mt-auto">
                     <h4 className="font-medium text-dark-900 dark:text-white mb-3">
-                      Key Skills
+                      Sample Skills
                     </h4>
                     <div className="flex flex-wrap gap-2">
-                      {path.skills.map(skill => (
+                      {path.skills.slice(0, 3).map(skill => (
                         <span 
                           key={skill}
-                          className="px-1 py-1 bg-primary-100 dark:bg-primary-900/20 text-primary-700 dark:text-primary-300 rounded-full text-sm"
+                          className="px-2 py-1 bg-primary-100 dark:bg-primary-900/20 text-primary-700 dark:text-primary-300 rounded-full text-xs"
                         >
                           {skill}
                         </span>
                       ))}
+                      <span className="px-2 py-1 bg-dark-100 dark:bg-dark-800 text-dark-600 dark:text-dark-400 rounded-full text-xs">
+                        +{path.skills.length - 3} more
+                      </span>
                     </div>
                   </div>
                 </motion.div>
@@ -224,7 +344,7 @@ const Services: React.FC = () => {
         </div>
       </section>
 
-      {/* Internship Section */}
+      {/* Internship Section - Enhanced */}
       <section id="internship" className="py-16 relative">
         <div className="container mx-auto px-4">
           <div className="flex flex-col lg:flex-row items-center gap-12">
@@ -248,12 +368,20 @@ const Services: React.FC = () => {
                         For college students looking to get a head start
                       </p>
                       <div className="flex space-x-2">
-                        <span className="px-3 py-1 bg-white/20 backdrop-blur-sm rounded-full text-sm font-medium">
+                        <motion.span 
+                          className="px-3 py-1 bg-white/20 backdrop-blur-sm rounded-full text-sm font-medium"
+                          animate={{ scale: [1, 1.05, 1] }}
+                          transition={{ duration: 2, repeat: Infinity }}
+                        >
                           ₹4,000/month
-                        </span>
-                        <span className="px-3 py-1 bg-white/20 backdrop-blur-sm rounded-full text-sm font-medium">
+                        </motion.span>
+                        <motion.span 
+                          className="px-3 py-1 bg-white/20 backdrop-blur-sm rounded-full text-sm font-medium"
+                          animate={{ scale: [1, 1.05, 1] }}
+                          transition={{ delay: 1, duration: 2, repeat: Infinity }}
+                        >
                           Real Projects
-                        </span>
+                        </motion.span>
                       </div>
                     </div>
                   </div>
@@ -277,29 +405,31 @@ const Services: React.FC = () => {
                 </p>
                 
                 <div className="bg-white dark:bg-dark-900 border border-dark-200 dark:border-dark-700 rounded-xl p-6 mb-8">
-                  <h3 className="text-xl font-semibold mb-4">Programme Highlights</h3>
+                  <h3 className="text-xl font-semibold mb-4 flex items-center">
+                    <Sparkles className="h-6 w-6 text-accent-500 mr-2" />
+                    Programme Highlights
+                  </h3>
                   
                   <div className="space-y-3">
-                    <div className="flex items-center">
-                      <CheckCircle className="h-5 w-5 text-success-500 mr-3" />
-                      <p>₹4,000 monthly stipend</p>
-                    </div>
-                    <div className="flex items-center">
-                      <CheckCircle className="h-5 w-5 text-success-500 mr-3" />
-                      <p>Work on real products used by customers</p>
-                    </div>
-                    <div className="flex items-center">
-                      <CheckCircle className="h-5 w-5 text-success-500 mr-3" />
-                      <p>Flexible hours that work with your class schedule</p>
-                    </div>
-                    <div className="flex items-center">
-                      <CheckCircle className="h-5 w-5 text-success-500 mr-3" />
-                      <p>Potential fast-track to VCAP after graduation</p>
-                    </div>
-                    <div className="flex items-center">
-                      <CheckCircle className="h-5 w-5 text-success-500 mr-3" />
-                      <p>Certificate of completion and recommendation letter</p>
-                    </div>
+                    {[
+                      { icon: <CheckCircle className="h-5 w-5 text-success-500" />, text: "₹4,000 monthly stipend" },
+                      { icon: <CheckCircle className="h-5 w-5 text-success-500" />, text: "Work on real products used by customers" },
+                      { icon: <CheckCircle className="h-5 w-5 text-success-500" />, text: "Flexible hours that work with your class schedule" },
+                      { icon: <CheckCircle className="h-5 w-5 text-success-500" />, text: "Potential fast-track to VCAP after graduation" },
+                      { icon: <CheckCircle className="h-5 w-5 text-success-500" />, text: "Certificate of completion and recommendation letter" }
+                    ].map((item, index) => (
+                      <motion.div 
+                        key={index}
+                        className="flex items-center"
+                        initial={{ opacity: 0, x: -10 }}
+                        animate={{ opacity: 1, x: 0 }}
+                        transition={{ delay: 0.1 * index }}
+                        whileHover={{ x: 5 }}
+                      >
+                        <div className="mr-3">{item.icon}</div>
+                        <p>{item.text}</p>
+                      </motion.div>
+                    ))}
                   </div>
                 </div>
                 
@@ -312,7 +442,7 @@ const Services: React.FC = () => {
         </div>
       </section>
 
-      {/* For Companies Section */}
+      {/* For Companies Section - Enhanced */}
       <section id="companies" className="py-16 md:py-24 relative bg-dark-50 dark:bg-dark-900/30">
         <div className="container mx-auto px-4">
           <AnimatedSection delay={0.1} direction="up" className="text-center mb-16">
@@ -330,32 +460,69 @@ const Services: React.FC = () => {
             </p>
           </AnimatedSection>
 
+          {/* Dynamic Feature Showcase */}
+          <div className="max-w-4xl mx-auto mb-12">
+            <AnimatedSection delay={0.2} direction="up">
+              <div className="bg-white dark:bg-dark-900 rounded-2xl p-8 shadow-xl dark:shadow-dark-900/30 border border-dark-200 dark:border-dark-700 relative overflow-hidden">
+                <div className="absolute top-0 right-0 w-40 h-40 bg-primary-500/5 rounded-full -mr-20 -mt-20"></div>
+                
+                <AnimatePresence mode="wait">
+                  <motion.div
+                    key={currentCompanyFeature}
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    exit={{ opacity: 0, y: -20 }}
+                    transition={{ duration: 0.5 }}
+                    className="relative z-10"
+                  >
+                    <div className="flex items-center mb-6">
+                      <div className="p-4 bg-primary-100 dark:bg-primary-900/20 rounded-xl mr-6">
+                        {companyFeatures[currentCompanyFeature].icon}
+                      </div>
+                      <div>
+                        <h3 className="text-3xl font-display font-bold">
+                          {companyFeatures[currentCompanyFeature].title}
+                        </h3>
+                        <p className="text-primary-600 dark:text-primary-400 font-medium">
+                          {companyFeatures[currentCompanyFeature].highlight}
+                        </p>
+                      </div>
+                    </div>
+                    
+                    <p className="text-lg text-dark-600 dark:text-dark-400">
+                      {companyFeatures[currentCompanyFeature].description}
+                    </p>
+                  </motion.div>
+                </AnimatePresence>
+                
+                {/* Feature indicators */}
+                <div className="flex justify-center space-x-2 mt-8">
+                  {companyFeatures.map((_, index) => (
+                    <button
+                      key={index}
+                      onClick={() => setCurrentCompanyFeature(index)}
+                      className={`w-3 h-3 rounded-full transition-colors ${
+                        index === currentCompanyFeature ? 'bg-primary-500' : 'bg-dark-300 dark:bg-dark-600'
+                      }`}
+                    />
+                  ))}
+                </div>
+              </div>
+            </AnimatedSection>
+          </div>
+
+          {/* Company Options Grid */}
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-5xl mx-auto">
-            {[
-              {
-                icon: <Briefcase className="h-10 w-10 text-primary-500" />,
-                title: "Hire VCAP Graduates",
-                description: "Access a pipeline of trained professionals who have proven their skills through real project work."
-              },
-              {
-                icon: <Users className="h-10 w-10 text-primary-500" />,
-                title: "Co-develop Training",
-                description: "Work with us to design training programmes tailored to your company's specific technical needs."
-              },
-              {
-                icon: <Building2 className="h-10 w-10 text-primary-500" />,
-                title: "Outsource Projects",
-                description: "Let our teams handle your development needs with quality work at competitive rates."
-              }
-            ].map((option, index) => (
+            {companyFeatures.map((option, index) => (
               <AnimatedSection
                 key={option.title}
                 delay={0.2 + index * 0.1}
                 direction="up"
               >
                 <motion.div 
-                  className="bg-white dark:bg-dark-900 rounded-xl p-8 text-center hover-card h-full"
+                  className="bg-white dark:bg-dark-900 rounded-xl p-8 text-center hover-card h-full cursor-pointer"
                   whileHover={{ y: -5 }}
+                  onClick={() => setCurrentCompanyFeature(index)}
                 >
                   <div className="flex justify-center mb-6">
                     <div className="p-4 bg-primary-100 dark:bg-primary-900/20 rounded-full">
@@ -381,13 +548,20 @@ const Services: React.FC = () => {
         </div>
       </section>
 
-      {/* Application Section */}
+      {/* Application Section - Enhanced */}
       <section id="apply" className="py-16 md:py-24 relative">
         <div className="container mx-auto px-4">
           <div className="max-w-5xl mx-auto">
             <div className="bg-gradient-to-br from-primary-500 to-accent-500 rounded-2xl p-1 shadow-xl dark:shadow-primary-500/20">
               <div className="bg-white dark:bg-dark-950 rounded-xl p-8 md:p-12">
                 <AnimatedSection delay={0.1} direction="up" className="text-center mb-10">
+                  <motion.div
+                    animate={{ scale: [1, 1.1, 1] }}
+                    transition={{ duration: 3, repeat: Infinity }}
+                    className="inline-block mb-6"
+                  >
+                    <Rocket className="h-16 w-16 text-primary-500" />
+                  </motion.div>
                   <h2 className="text-3xl md:text-4xl font-display font-bold mb-6">
                     Apply Now
                   </h2>
@@ -400,7 +574,12 @@ const Services: React.FC = () => {
                   <AnimatedSection delay={0.2} direction="left" className="space-y-4">
                     <div className="bg-dark-50 dark:bg-dark-900/50 rounded-xl p-6 border border-dark-200 dark:border-dark-800">
                       <div className="flex items-center mb-4">
-                        <Briefcase className="h-6 w-6 text-primary-500 mr-3" />
+                        <motion.div
+                          animate={{ rotate: [0, 360] }}
+                          transition={{ duration: 10, repeat: Infinity, ease: "linear" }}
+                        >
+                          <Briefcase className="h-6 w-6 text-primary-500 mr-3" />
+                        </motion.div>
                         <h3 className="text-xl font-semibold">VCAP Programme</h3>
                       </div>
                       <ul className="space-y-3 mb-6">
@@ -424,7 +603,12 @@ const Services: React.FC = () => {
                     
                     <div className="bg-dark-50 dark:bg-dark-900/50 rounded-xl p-6 border border-dark-200 dark:border-dark-800">
                       <div className="flex items-center mb-4">
-                        <GraduationCap className="h-6 w-6 text-accent-500 mr-3" />
+                        <motion.div
+                          animate={{ y: [0, -5, 0] }}
+                          transition={{ duration: 2, repeat: Infinity }}
+                        >
+                          <GraduationCap className="h-6 w-6 text-accent-500 mr-3" />
+                        </motion.div>
                         <h3 className="text-xl font-semibold">Vstart Internship</h3>
                       </div>
                       <ul className="space-y-3 mb-6">
@@ -449,7 +633,8 @@ const Services: React.FC = () => {
                   
                   <AnimatedSection delay={0.3} direction="right">
                     <div className="bg-dark-50 dark:bg-dark-900/50 rounded-xl p-6 border border-dark-200 dark:border-dark-800 h-full">
-                      <h3 className="text-xl font-semibold mb-6">
+                      <h3 className="text-xl font-semibold mb-6 flex items-center">
+                        <Clock className="h-6 w-6 text-primary-500 mr-2" />
                         Application Process
                       </h3>
                       
@@ -471,11 +656,20 @@ const Services: React.FC = () => {
                             description: "Receive your offer and join our team immediately"
                           }
                         ].map((step, index) => (
-                          <div key={step.step} className="flex">
+                          <motion.div 
+                            key={step.step} 
+                            className="flex"
+                            initial={{ opacity: 0, x: -20 }}
+                            animate={{ opacity: 1, x: 0 }}
+                            transition={{ delay: 0.1 * index }}
+                          >
                             <div className="mr-4">
-                              <div className="flex items-center justify-center w-10 h-10 rounded-full bg-primary-100 dark:bg-primary-900/30 text-primary-500 font-bold">
+                              <motion.div 
+                                className="flex items-center justify-center w-10 h-10 rounded-full bg-primary-100 dark:bg-primary-900/30 text-primary-500 font-bold"
+                                whileHover={{ scale: 1.1 }}
+                              >
                                 {index + 1}
-                              </div>
+                              </motion.div>
                             </div>
                             <div>
                               <h4 className="text-lg font-medium mb-1">
@@ -489,7 +683,7 @@ const Services: React.FC = () => {
                                 <div className="h-8 ml-5 border-l border-dashed border-primary-300 dark:border-primary-700"></div>
                               )}
                             </div>
-                          </div>
+                          </motion.div>
                         ))}
                       </div>
                       

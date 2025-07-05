@@ -1,77 +1,75 @@
-import React from 'react';
-import { motion } from 'framer-motion';
+import React, { useState, useEffect } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
 import AnimatedSection from '../components/ui/AnimatedSection';
 import ParallaxElement from '../components/ui/ParallaxElement';
 import Button from '../components/ui/Button';
-import { Users, Lightbulb, TrendingUp, Award, CheckCircle2 } from 'lucide-react';
+import { Users, Lightbulb, TrendingUp, Award, CheckCircle2, Zap, Target, Rocket, Heart, Globe } from 'lucide-react';
 
 const About: React.FC = () => {
-  const stats = [
-    { label: 'Freshers Trained', value: '150+' },
-    { label: 'Success Rate', value: '85%' },
-    { label: 'Company Partners', value: '25+' },
-    { label: 'Average Salary', value: '₹15K/mo' },
-  ];
+  const [currentValueIndex, setCurrentValueIndex] = useState(0);
+  const [currentMissionIndex, setCurrentMissionIndex] = useState(0);
+
+  // Cycle through values
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentValueIndex((prev) => (prev + 1) % 4);
+    }, 4000);
+    return () => clearInterval(interval);
+  }, []);
+
+  // Cycle through mission statements
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentMissionIndex((prev) => (prev + 1) % 3);
+    }, 3500);
+    return () => clearInterval(interval);
+  }, []);
 
   const values = [
     { 
       icon: <Lightbulb className="h-8 w-8 text-primary-500" />, 
       title: 'Skill Over Credentials',
-      description: 'We believe in your abilities, not your papers. Our assessment focuses on aptitude and potential, not degrees or English fluency.'
+      description: 'We believe in your abilities, not your papers. Our assessment focuses on aptitude and potential, not degrees or English fluency.',
+      color: 'from-blue-500 to-purple-500'
     },
     { 
       icon: <TrendingUp className="h-8 w-8 text-primary-500" />, 
       title: 'Learn While You Earn',
-      description: 'Get paid from day one as you acquire industry-relevant skills. Our model ensures financial stability while you grow professionally.'
+      description: 'Get paid from day one as you acquire industry-relevant skills. Our model ensures financial stability while you grow professionally.',
+      color: 'from-green-500 to-teal-500'
     },
     { 
       icon: <Users className="h-8 w-8 text-primary-500" />, 
       title: 'Inclusive Opportunity',
-      description: 'We remove traditional barriers to entry in the tech industry. Your background, location, or language skills don\'t limit your potential.'
+      description: 'We remove traditional barriers to entry in the tech industry. Your background, location, or language skills don\'t limit your potential.',
+      color: 'from-orange-500 to-red-500'
     },
     { 
       icon: <Award className="h-8 w-8 text-primary-500" />, 
       title: 'Real-World Excellence',
-      description: 'Work on actual products used by real customers. Learn practical skills that matter in the industry and build a portfolio of real achievements.'
+      description: 'Work on actual products used by real customers. Learn practical skills that matter in the industry and build a portfolio of real achievements.',
+      color: 'from-purple-500 to-pink-500'
     },
   ];
 
-  const teamMembers = [
+  const missionStatements = [
     {
-      name: "Rajesh Kumar",
-      role: "CEO & Founder",
-      image: "https://images.pexels.com/photos/2379004/pexels-photo-2379004.jpeg?auto=compress&cs=tinysrgb&w=800",
-      description: "Former tech lead with 8+ years experience. Passionate about democratizing tech education."
+      icon: <Target className="h-12 w-12 text-accent-500" />,
+      title: "Our Mission",
+      description: "To democratize access to tech careers by removing traditional barriers and focusing on potential over credentials.",
+      highlight: "Breaking barriers"
     },
     {
-      name: "Priya Sharma",
-      role: "CTO",
-      image: "https://images.pexels.com/photos/1239291/pexels-photo-1239291.jpeg?auto=compress&cs=tinysrgb&w=800",
-      description: "Full-stack developer and educator. Believes in practical, hands-on learning approaches."
+      icon: <Heart className="h-12 w-12 text-accent-500" />,
+      title: "Our Vision",
+      description: "A world where talent is recognized regardless of background, and everyone has the opportunity to build a meaningful career in technology.",
+      highlight: "Inclusive future"
     },
     {
-      name: "Amit Patel",
-      role: "Program Director",
-      image: "https://images.pexels.com/photos/1516680/pexels-photo-1516680.jpeg?auto=compress&cs=tinysrgb&w=800",
-      description: "Curriculum designer with expertise in electronics and embedded systems."
-    },
-    {
-      name: "Sneha Reddy",
-      role: "Head of Training",
-      image: "https://images.pexels.com/photos/1181686/pexels-photo-1181686.jpeg?auto=compress&cs=tinysrgb&w=800",
-      description: "Mechanical engineer turned educator. Focuses on practical skill development."
-    },
-    {
-      name: "Vikram Singh",
-      role: "Lead Developer",
-      image: "https://images.pexels.com/photos/2182970/pexels-photo-2182970.jpeg?auto=compress&cs=tinysrgb&w=800",
-      description: "Software architect with expertise in AI/ML integration and modern web technologies."
-    },
-    {
-      name: "Kavya Nair",
-      role: "Operations Manager",
-      image: "https://images.pexels.com/photos/1181424/pexels-photo-1181424.jpeg?auto=compress&cs=tinysrgb&w=800",
-      description: "Operations specialist ensuring smooth program delivery and student success."
+      icon: <Globe className="h-12 w-12 text-accent-500" />,
+      title: "Our Impact",
+      description: "Creating a ripple effect of positive change by transforming individual lives and contributing to a more diverse tech ecosystem.",
+      highlight: "Global change"
     }
   ];
 
@@ -82,6 +80,13 @@ const About: React.FC = () => {
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto text-center">
             <AnimatedSection delay={0.1} direction="up">
+              <motion.div
+                animate={{ rotate: [0, 360] }}
+                transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
+                className="inline-block mb-6"
+              >
+                <Zap className="h-16 w-16 text-primary-500" />
+              </motion.div>
               <h1 className="text-4xl md:text-5xl lg:text-6xl font-display font-bold mb-6">
                 About <span className="text-gradient">Vibai Innovixs</span>
               </h1>
@@ -92,36 +97,67 @@ const About: React.FC = () => {
                 We're reimagining how careers begin. No interviews, no degree requirements, no language barriers—just an opportunity to prove your skills and build your future.
               </p>
             </AnimatedSection>
-            
-            {/* <AnimatedSection delay={0.5} className="flex justify-center">
-              <ParallaxElement speed={-0.1}>
-                <div className="grid grid-cols-2 md:grid-cols-4 gap-4 sm:gap-8">
-                  {stats.map((stat, index) => (
-                    <motion.div
-                      key={stat.label}
-                      className="bg-white dark:bg-dark-900 p-6 rounded-xl shadow-lg dark:shadow-dark-900/30 border border-dark-200 dark:border-dark-700"
-                      initial={{ opacity: 0, y: 20 }}
-                      animate={{ opacity: 1, y: 0 }}
-                      transition={{ delay: 0.1 * index + 0.5, duration: 0.5 }}
-                      whileHover={{ y: -5, scale: 1.03 }}
-                    >
-                      <div className="text-3xl md:text-4xl font-display font-bold text-primary-500 mb-2">
-                        {stat.value}
+          </div>
+        </div>
+      </section>
+
+      {/* Mission/Vision Dynamic Section */}
+      <section className="py-16 relative bg-dark-50 dark:bg-dark-900/30">
+        <div className="container mx-auto px-4">
+          <div className="max-w-4xl mx-auto">
+            <AnimatedSection delay={0.1} direction="up">
+              <div className="bg-white dark:bg-dark-900 rounded-2xl p-8 shadow-xl dark:shadow-dark-900/30 border border-dark-200 dark:border-dark-700 relative overflow-hidden">
+                <div className="absolute top-0 right-0 w-40 h-40 bg-accent-500/5 rounded-full -mr-20 -mt-20"></div>
+                
+                <AnimatePresence mode="wait">
+                  <motion.div
+                    key={currentMissionIndex}
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    exit={{ opacity: 0, y: -20 }}
+                    transition={{ duration: 0.5 }}
+                    className="relative z-10"
+                  >
+                    <div className="flex items-center mb-6">
+                      <div className="p-4 bg-accent-100 dark:bg-accent-900/20 rounded-xl mr-6">
+                        {missionStatements[currentMissionIndex].icon}
                       </div>
-                      <div className="text-sm md:text-base text-dark-500 dark:text-dark-400">
-                        {stat.label}
+                      <div>
+                        <h2 className="text-3xl font-display font-bold">
+                          {missionStatements[currentMissionIndex].title}
+                        </h2>
+                        <p className="text-accent-600 dark:text-accent-400 font-medium">
+                          {missionStatements[currentMissionIndex].highlight}
+                        </p>
                       </div>
-                    </motion.div>
+                    </div>
+                    
+                    <p className="text-lg text-dark-600 dark:text-dark-400">
+                      {missionStatements[currentMissionIndex].description}
+                    </p>
+                  </motion.div>
+                </AnimatePresence>
+                
+                {/* Mission indicators */}
+                <div className="flex justify-center space-x-2 mt-8">
+                  {missionStatements.map((_, index) => (
+                    <button
+                      key={index}
+                      onClick={() => setCurrentMissionIndex(index)}
+                      className={`w-3 h-3 rounded-full transition-colors ${
+                        index === currentMissionIndex ? 'bg-accent-500' : 'bg-dark-300 dark:bg-dark-600'
+                      }`}
+                    />
                   ))}
                 </div>
-              </ParallaxElement>
-            </AnimatedSection> */}
+              </div>
+            </AnimatedSection>
           </div>
         </div>
       </section>
 
       {/* Our Story Section */}
-      <section id="team" className="py-16 md:py-20 relative">
+      <section id="story" className="py-16 md:py-20 relative">
         <div className="container mx-auto px-4">
           <div className="flex flex-col md:flex-row items-center md:space-x-12">
             <div className="md:w-1/2 mb-12 md:mb-0">
@@ -140,6 +176,12 @@ const About: React.FC = () => {
                       alt="Team collaborating" 
                       className="w-full h-96 object-cover"
                     />
+                    <div className="absolute inset-0 bg-gradient-to-t from-dark-950/70 to-transparent flex items-end p-6">
+                      <div className="text-white">
+                        <h3 className="text-xl font-bold mb-2">Building the Future</h3>
+                        <p className="text-white/80">One opportunity at a time</p>
+                      </div>
+                    </div>
                   </motion.div>
                 </div>
               </AnimatedSection>
@@ -147,6 +189,10 @@ const About: React.FC = () => {
             
             <div className="md:w-1/2">
               <AnimatedSection delay={0.4} direction="right">
+                <div className="inline-flex items-center px-4 py-2 bg-primary-100 dark:bg-primary-900/20 text-primary-600 dark:text-primary-300 rounded-full mb-6">
+                  <Rocket className="h-5 w-5 mr-2" />
+                  <span className="font-medium">Our Journey</span>
+                </div>
                 <h2 className="text-3xl md:text-4xl font-display font-bold mb-6">
                   Our Story
                 </h2>
@@ -160,8 +206,25 @@ const About: React.FC = () => {
                   That's why we created VCAP—a programme that flips the traditional hiring model on its head. We hire first, train comprehensively, and focus on what truly matters: your ability to learn and contribute.
                 </p>
                 
-                <Button href="/portfolio" variant="outline">
-                  See Our Success Stories
+                <div className="grid grid-cols-2 gap-4 mb-8">
+                  <motion.div 
+                    className="text-center p-4 bg-primary-50 dark:bg-primary-900/10 rounded-lg"
+                    whileHover={{ scale: 1.05 }}
+                  >
+                    <div className="text-2xl font-bold text-primary-500">150+</div>
+                    <div className="text-sm text-dark-600 dark:text-dark-400">Lives Changed</div>
+                  </motion.div>
+                  <motion.div 
+                    className="text-center p-4 bg-accent-50 dark:bg-accent-900/10 rounded-lg"
+                    whileHover={{ scale: 1.05 }}
+                  >
+                    <div className="text-2xl font-bold text-accent-500">85%</div>
+                    <div className="text-sm text-dark-600 dark:text-dark-400">Success Rate</div>
+                  </motion.div>
+                </div>
+                
+                <Button href="/contact" variant="outline">
+                  Join Our Mission
                 </Button>
               </AnimatedSection>
             </div>
@@ -169,8 +232,8 @@ const About: React.FC = () => {
         </div>
       </section>
 
-      {/* Our Values Section */}
-      <section id="values" className="py-16 md:py-24 relative">
+      {/* Our Values Section - Enhanced */}
+      <section id="values" className="py-16 md:py-24 relative bg-dark-50 dark:bg-dark-900/30">
         <div className="container mx-auto px-4">
           <AnimatedSection delay={0.1} direction="up" className="text-center mb-16">
             <h2 className="text-3xl md:text-4xl font-display font-bold mb-6">
@@ -181,6 +244,57 @@ const About: React.FC = () => {
             </p>
           </AnimatedSection>
 
+          {/* Featured Value Showcase */}
+          <div className="max-w-4xl mx-auto mb-12">
+            <AnimatedSection delay={0.2} direction="up">
+              <div className="bg-white dark:bg-dark-900 rounded-2xl p-8 shadow-xl dark:shadow-dark-900/30 border border-dark-200 dark:border-dark-700 relative overflow-hidden">
+                <div className={`absolute top-0 left-0 w-full h-2 bg-gradient-to-r ${values[currentValueIndex].color}`}></div>
+                
+                <AnimatePresence mode="wait">
+                  <motion.div
+                    key={currentValueIndex}
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    exit={{ opacity: 0, y: -20 }}
+                    transition={{ duration: 0.5 }}
+                  >
+                    <div className="flex items-center mb-6">
+                      <div className="p-4 bg-primary-100 dark:bg-primary-900/20 rounded-xl mr-6">
+                        {values[currentValueIndex].icon}
+                      </div>
+                      <div>
+                        <h3 className="text-3xl font-display font-bold">
+                          {values[currentValueIndex].title}
+                        </h3>
+                        <p className="text-primary-600 dark:text-primary-400 font-medium">
+                          Core Value #{currentValueIndex + 1}
+                        </p>
+                      </div>
+                    </div>
+                    
+                    <p className="text-lg text-dark-600 dark:text-dark-400">
+                      {values[currentValueIndex].description}
+                    </p>
+                  </motion.div>
+                </AnimatePresence>
+                
+                {/* Value indicators */}
+                <div className="flex justify-center space-x-2 mt-8">
+                  {values.map((_, index) => (
+                    <button
+                      key={index}
+                      onClick={() => setCurrentValueIndex(index)}
+                      className={`w-3 h-3 rounded-full transition-colors ${
+                        index === currentValueIndex ? 'bg-primary-500' : 'bg-dark-300 dark:bg-dark-600'
+                      }`}
+                    />
+                  ))}
+                </div>
+              </div>
+            </AnimatedSection>
+          </div>
+
+          {/* All Values Grid */}
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
             {values.map((value, index) => (
               <AnimatedSection
@@ -189,8 +303,9 @@ const About: React.FC = () => {
                 direction={index % 2 === 0 ? 'left' : 'right'}
               >
                 <motion.div 
-                  className="bg-white dark:bg-dark-900 border border-dark-200 dark:border-dark-700 rounded-xl p-8 hover-card h-full"
+                  className="bg-white dark:bg-dark-900 border border-dark-200 dark:border-dark-700 rounded-xl p-8 hover-card h-full cursor-pointer"
                   whileHover={{ y: -5 }}
+                  onClick={() => setCurrentValueIndex(index)}
                 >
                   <div className="flex items-center mb-4">
                     <div className="p-3 bg-primary-100 dark:bg-primary-900/20 rounded-lg mr-4">
@@ -208,55 +323,7 @@ const About: React.FC = () => {
         </div>
       </section>
 
-      {/* Team Section */}
-     {/* <section id="team" className="py-16 md:py-24 relative bg-dark-50 dark:bg-dark-900/30">
-        <div className="container mx-auto px-4">
-          <AnimatedSection delay={0.1} direction="up" className="text-center mb-16">
-            <h2 className="text-3xl md:text-4xl font-display font-bold mb-6">
-              Meet Our <span className="text-gradient">Team</span>
-            </h2>
-            <p className="text-xl text-dark-600 dark:text-dark-300 max-w-3xl mx-auto">
-              The passionate individuals behind Vibai Innovixs who are committed to transforming careers and creating opportunities.
-            </p>
-          </AnimatedSection>
-
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
-            {teamMembers.map((member, index) => (
-              <AnimatedSection
-                key={member.name}
-                delay={0.1 * (index + 1)}
-                direction="up"
-              >
-                <motion.div 
-                  className="bg-white dark:bg-dark-900 rounded-xl overflow-hidden hover-card"
-                  whileHover={{ y: -5 }}
-                >
-                  <div className="h-60 overflow-hidden">
-                    <img 
-                      src={member.image} 
-                      alt={member.name} 
-                      className="w-full h-full object-cover transition-transform duration-500 hover:scale-110"
-                    />
-                  </div>
-                  <div className="p-6">
-                    <h3 className="font-display font-semibold text-xl mb-1">
-                      {member.name}
-                    </h3>
-                    <p className="text-primary-500 dark:text-primary-400 text-sm mb-3">
-                      {member.role}
-                    </p>
-                    <p className="text-dark-600 dark:text-dark-400 text-sm">
-                      {member.description}
-                    </p>
-                  </div>
-                </motion.div>
-              </AnimatedSection>
-            ))}
-          </div>
-        </div>
-      </section> */}
-
-      {/* Careers Section */}
+      {/* Careers Section - Enhanced */}
       <section id="careers" className="py-16 md:py-24 relative">
         <div className="container mx-auto px-4">
           <div className="rounded-2xl bg-gradient-to-br from-primary-500 to-accent-500 p-1">
@@ -264,9 +331,17 @@ const About: React.FC = () => {
               <div className="flex flex-col md:flex-row">
                 <div className="md:w-2/3 mb-8 md:mb-0 md:pr-12">
                   <AnimatedSection delay={0.1} direction="left">
-                    <h2 className="text-3xl md:text-4xl font-display font-bold mb-6">
-                      Join Our Team
-                    </h2>
+                    <div className="flex items-center mb-6">
+                      <motion.div
+                        animate={{ scale: [1, 1.1, 1] }}
+                        transition={{ duration: 2, repeat: Infinity }}
+                      >
+                        <Users className="h-12 w-12 text-primary-500 mr-4" />
+                      </motion.div>
+                      <h2 className="text-3xl md:text-4xl font-display font-bold">
+                        Join Our Team
+                      </h2>
+                    </div>
                     
                     <p className="text-lg text-dark-600 dark:text-dark-300 mb-4">
                       We're always looking for talented individuals to join our growing team. At Vibai Innovixs, we practice what we preach—your skills and passion matter more than your background.
@@ -277,11 +352,14 @@ const About: React.FC = () => {
                     </p>
                     
                     <div className="space-y-4">
-                      {['Trainers & Mentors', 'Software Developers', 'Curriculum Designers'].map((position) => (
+                      {['Trainers & Mentors', 'Software Developers', 'Curriculum Designers'].map((position, index) => (
                         <motion.div 
                           key={position}
                           className="flex items-center"
                           whileHover={{ x: 5 }}
+                          initial={{ opacity: 0, x: -10 }}
+                          animate={{ opacity: 1, x: 0 }}
+                          transition={{ delay: 0.1 * index }}
                         >
                           <CheckCircle2 className="text-primary-500 mr-2 h-5 w-5" />
                           <span className="font-medium">{position}</span>
@@ -294,7 +372,8 @@ const About: React.FC = () => {
                 <div className="md:w-1/3">
                   <AnimatedSection delay={0.3} direction="right">
                     <div className="bg-dark-50 dark:bg-dark-800 p-6 rounded-lg">
-                      <h3 className="font-display font-semibold text-xl mb-4">
+                      <h3 className="font-display font-semibold text-xl mb-4 flex items-center">
+                        <Rocket className="h-6 w-6 text-accent-500 mr-2" />
                         Current Openings
                       </h3>
                       
@@ -309,6 +388,9 @@ const About: React.FC = () => {
                             href="/contact"
                             className="block p-4 bg-white dark:bg-dark-900 rounded-lg hover:bg-primary-50 dark:hover:bg-primary-900/10 transition-colors border border-dark-200 dark:border-dark-700"
                             whileHover={{ x: 5 }}
+                            initial={{ opacity: 0, y: 10 }}
+                            animate={{ opacity: 1, y: 0 }}
+                            transition={{ delay: 0.1 * index }}
                           >
                             <div className="font-medium text-dark-900 dark:text-white">
                               {job.title}
@@ -322,7 +404,7 @@ const About: React.FC = () => {
                       
                       <div className="mt-6">
                         <Button href="/contact#form" fullWidth>
-                          Get for more info
+                          Get More Info
                         </Button>
                       </div>
                     </div>
