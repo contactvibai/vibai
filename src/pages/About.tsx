@@ -206,23 +206,6 @@ const About: React.FC = () => {
                   That's why we created VCAP—a programme that flips the traditional hiring model on its head. We hire first, train comprehensively, and focus on what truly matters: your ability to learn and contribute.
                 </p>
                 
-                <div className="grid grid-cols-2 gap-4 mb-8">
-                  <motion.div 
-                    className="text-center p-4 bg-primary-50 dark:bg-primary-900/10 rounded-lg"
-                    whileHover={{ scale: 1.05 }}
-                  >
-                    <div className="text-2xl font-bold text-primary-500">150+</div>
-                    <div className="text-sm text-dark-600 dark:text-dark-400">Lives Changed</div>
-                  </motion.div>
-                  <motion.div 
-                    className="text-center p-4 bg-accent-50 dark:bg-accent-900/10 rounded-lg"
-                    whileHover={{ scale: 1.05 }}
-                  >
-                    <div className="text-2xl font-bold text-accent-500">85%</div>
-                    <div className="text-sm text-dark-600 dark:text-dark-400">Success Rate</div>
-                  </motion.div>
-                </div>
-                
                 <Button href="/contact" variant="outline">
                   Join Our Mission
                 </Button>

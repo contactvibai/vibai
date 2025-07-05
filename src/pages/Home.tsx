@@ -5,7 +5,7 @@ import AnimatedSection from '../components/ui/AnimatedSection';
 import { HashLink } from 'react-router-hash-link';
 import ParallaxElement from '../components/ui/ParallaxElement';
 import Button from '../components/ui/Button';
-import { ArrowRight, GraduationCap, Home as HomeIcon, Briefcase, CheckCircle, Code as CodeXml, Cpu, Users, Target, TrendingUp, Award, Zap, Clock, MapPin, Sparkles, Rocket } from 'lucide-react';
+import { ArrowRight, GraduationCap, Home as HomeIcon, Briefcase, CheckCircle, Code as CodeXml, Cpu, Target, TrendingUp, Award, Zap, Sparkles, Rocket } from 'lucide-react';
 
 const Home: React.FC = () => {
   const { prefersReducedMotion } = useMotion();
@@ -418,19 +418,13 @@ const Home: React.FC = () => {
                         </motion.div>
                       </div>
                       
-                      <div className="grid grid-cols-3 gap-4 text-center">
-                        <div>
-                          <div className="text-2xl font-bold text-primary-500">150+</div>
-                          <div className="text-xs text-dark-500">Lives Changed</div>
-                        </div>
-                        <div>
-                          <div className="text-2xl font-bold text-success-500">85%</div>
-                          <div className="text-xs text-dark-500">Success Rate</div>
-                        </div>
-                        <div>
-                          <div className="text-2xl font-bold text-accent-500">₹18K</div>
-                          <div className="text-xs text-dark-500">Avg. Salary</div>
-                        </div>
+                      <div className="text-center">
+                        <p className="text-dark-600 dark:text-dark-400 mb-4">
+                          Transform your career with our innovative approach to talent development.
+                        </p>
+                        <Button href="/contact" variant="outline" size="sm">
+                          Get Started Today
+                        </Button>
                       </div>
                     </div>
                   </div>
@@ -587,7 +581,7 @@ const Home: React.FC = () => {
                         transition={{ duration: 2, repeat: Infinity }}
                         className="p-3 bg-primary-100 dark:bg-primary-900/20 rounded-lg mr-4"
                       >
-                        <Clock className="h-6 w-6 text-primary-500" />
+                        <CheckCircle className="h-6 w-6 text-primary-500" />
                       </motion.div>
                       <div>
                         <h4 className="text-lg font-semibold">Flexible Timing</h4>
