@@ -405,7 +405,7 @@ const Home: React.FC = () => {
                     <div className="bg-white dark:bg-dark-950 rounded-xl p-6">
                       <div className="flex items-center justify-between mb-4">
                         <div>
-                          <h4 className="text-lg font-semibold">Ready to Start?</h4>
+                          <h4 className="text-lg font-semibold">Transform Your Career</h4>
                           <p className="text-dark-600 dark:text-dark-400 text-sm">
                             Join the revolution in career building
                           </p>
@@ -444,7 +444,7 @@ const Home: React.FC = () => {
                           <TrendingUp className="h-8 w-8 text-primary-500" />
                         </div>
                         <div>
-                          <h4 className="text-xl font-semibold">Your Effort &gt; Your Resume</h4>
+                          <h4 className="text-xl font-semibold">Your Effort > Your Resume</h4>
                           <p className="text-dark-600 dark:text-dark-400 text-sm">Potential over papers</p>
                         </div>
                       </div>
@@ -485,7 +485,7 @@ const Home: React.FC = () => {
                     >
                       <div className="flex items-center mb-4">
                         <Zap className="h-8 w-8 mr-3" />
-                        <h4 className="text-xl font-semibold">Ready to Start?</h4>
+                        <h4 className="text-xl font-semibold">Start Your Journey</h4>
                       </div>
                       <p className="mb-6 opacity-90">
                         Join thousands who've launched their careers through VCAP. Your journey begins with a single step.
