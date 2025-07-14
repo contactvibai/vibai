@@ -400,35 +400,6 @@ const Home: React.FC = () => {
                   </div>
                 </AnimatedSection>
 
-                <AnimatedSection delay={0.4} direction="left">
-                  <div className="bg-gradient-to-r from-primary-500 to-accent-500 rounded-2xl p-1 shadow-xl">
-                    <div className="bg-white dark:bg-dark-950 rounded-xl p-6">
-                      <div className="flex items-center justify-between mb-4">
-                        <div>
-                          <h4 className="text-lg font-semibold">Transform Your Career</h4>
-                          <p className="text-dark-600 dark:text-dark-400 text-sm">
-                            Join the revolution in career building
-                          </p>
-                        </div>
-                        <motion.div
-                          animate={{ rotate: [0, 360] }}
-                          transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
-                        >
-                          <Zap className="h-8 w-8 text-primary-500" />
-                        </motion.div>
-                      </div>
-                      
-                      <div className="text-center">
-                        <p className="text-dark-600 dark:text-dark-400 mb-4">
-                          Transform your career with our innovative approach to talent development.
-                        </p>
-                        <Button href="/contact" variant="outline" size="sm">
-                          Get Started Today
-                        </Button>
-                      </div>
-                    </div>
-                  </div>
-                </AnimatedSection>
               </div>
 
               {/* Right Side - Visual Elements */}
