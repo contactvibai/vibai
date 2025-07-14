@@ -447,26 +447,6 @@ const Home: React.FC = () => {
                     </motion.div>
                   </div>
                 </AnimatedSection>
-
-                <AnimatedSection delay={0.6} direction="right">
-                  <div className="relative">
-                    <motion.div 
-                      className="bg-gradient-to-br from-secondary-500 to-primary-500 rounded-2xl p-8 text-white shadow-xl"
-                      whileHover={{ scale: 1.02 }}
-                    >
-                      <div className="flex items-center mb-4">
-                        <Zap className="h-8 w-8 mr-3" />
-                        <h4 className="text-xl font-semibold">Start Your Journey</h4>
-                      </div>
-                      <p className="mb-6 opacity-90">
-                        Join thousands who've launched their careers through VCAP. Your journey begins with a single step.
-                      </p>
-                      <Button href="/contact" variant="outline" className="border-white text-white hover:bg-white hover:text-primary-500">
-                        Apply Now
-                      </Button>
-                    </motion.div>
-                  </div>
-                </AnimatedSection>
               </div>
             </div>
           </div>
