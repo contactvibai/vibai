@@ -592,34 +592,6 @@ const Home: React.FC = () => {
           </div>
         </div>
       </section>
-
-      {/* CTA Section */}
-      <section className="py-20 relative">
-        <div className="absolute inset-0 -z-10 bg-gradient-to-br from-primary-500/5 via-transparent to-accent-500/5"></div>
-        
-        <div className="container mx-auto px-4 relative">
-          <AnimatedSection className="max-w-4xl mx-auto text-center">
-            <h2 className="text-3xl md:text-4xl font-display font-bold mb-6">
-              No formalities. No gatekeeping.
-              <br />
-              <span className="text-gradient">Just opportunity.</span>
-            </h2>
-            
-            <p className="text-xl text-dark-600 dark:text-dark-300 mb-8 max-w-2xl mx-auto">
-              Join thousands of freshers who have launched their careers through our innovative programmes. Your journey to success starts here.
-            </p>
-            
-            <div className="flex flex-col sm:flex-row justify-center space-y-4 sm:space-y-0 sm:space-x-4">
-              <Button href="/contact" size="lg">
-                Apply for VCAP
-              </Button>
-              <Button href="/contact" variant="outline" size="lg">
-                Vstart Internship
-              </Button>
-            </div>
-          </AnimatedSection>
-        </div>
-      </section>
     </>
   );
 };
