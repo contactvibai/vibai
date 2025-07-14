@@ -277,32 +277,6 @@ const About: React.FC = () => {
             </AnimatedSection>
           </div>
 
-          {/* All Values Grid */}
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-            {values.map((value, index) => (
-              <AnimatedSection
-                key={value.title}
-                delay={0.2 + index * 0.1}
-                direction={index % 2 === 0 ? 'left' : 'right'}
-              >
-                <motion.div 
-                  className="bg-white dark:bg-dark-900 border border-dark-200 dark:border-dark-700 rounded-xl p-8 hover-card h-full cursor-pointer"
-                  whileHover={{ y: -5 }}
-                  onClick={() => setCurrentValueIndex(index)}
-                >
-                  <div className="flex items-center mb-4">
-                    <div className="p-3 bg-primary-100 dark:bg-primary-900/20 rounded-lg mr-4">
-                      {value.icon}
-                    </div>
-                    <h3 className="text-2xl font-display font-semibold">{value.title}</h3>
-                  </div>
-                  <p className="text-dark-600 dark:text-dark-300">
-                    {value.description}
-                  </p>
-                </motion.div>
-              </AnimatedSection>
-            ))}
-          </div>
         </div>
       </section>
 
