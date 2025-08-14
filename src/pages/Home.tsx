@@ -415,7 +415,7 @@ const Home: React.FC = () => {
                           <TrendingUp className="h-8 w-8 text-primary-500" />
                         </div>
                         <div>
-                          <h4 className="text-xl font-semibold">Your Effort {'>'}  Your Resume</h4>
+                          <h4 className="text-xl font-semibold">Your Effort {'>'} Your Resume</h4>
                           <p className="text-dark-600 dark:text-dark-400 text-sm">Potential over papers</p>
                         </div>
                       </div>
