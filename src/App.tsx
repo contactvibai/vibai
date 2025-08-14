@@ -11,7 +11,7 @@ import Layout from './components/Layout';
 const Home = lazy(() => import('./pages/Home'));
 const About = lazy(() => import('./pages/About'));
 const Services = lazy(() => import('./pages/Services'));
-// const Portfolio = lazy(() => import('./pages/Portfolio'));
+const Projects = lazy(() => import('./pages/Projects'));
 const Contact = lazy(() => import('./pages/Contact'));
 const NotFound = lazy(() => import('./pages/NotFound'));
 
@@ -95,11 +95,11 @@ function App() {
                 <Services />
               </Suspense>
             } />
-           {/* <Route path="portfolio" element={
+            <Route path="projects" element={
               <Suspense fallback={<Loader />}>
-                <Portfolio />
+                <Projects />
               </Suspense>
-            } /> */}
+            } />
             <Route path="contact" element={
               <Suspense fallback={<Loader />}>
                 <Contact />

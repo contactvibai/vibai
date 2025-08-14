@@ -20,7 +20,7 @@ const Navbar: React.FC<NavbarProps> = ({ isMobile, closeMobileMenu }) => {
     { path: '/', label: 'Home' },
     { path: '/about', label: 'About' },
     { path: '/services', label: 'Programs' },
-    // { path: '/portfolio', label: 'Success Stories' },
+    { path: '/projects', label: 'Projects' },
     { path: '/contact', label: 'Contact' },
   ];
 
