@@ -23,8 +23,8 @@ const Projects: React.FC = () => {
         "Digital receipt and loyalty program"
       ],
       tech: ["React Native", "Node.js", "MongoDB", "Firebase", "Stripe API"],
-      status: "Live",
-      users: "10K+ active users",
+      status: "In Development",
+      users: "Target: 10K+ users",
       color: "from-green-500 to-emerald-500"
     },
     {
@@ -42,8 +42,8 @@ const Projects: React.FC = () => {
         "Automated dispatch management"
       ],
       tech: ["Flutter", "Express.js", "PostgreSQL", "Redis", "Google Maps API"],
-      status: "Live",
-      users: "25K+ deliveries completed",
+      status: "In Development",
+      users: "Target: 25K+ deliveries",
       color: "from-blue-500 to-cyan-500"
     },
     {
@@ -61,8 +61,8 @@ const Projects: React.FC = () => {
         "Automated grading system"
       ],
       tech: ["React", "Django", "PostgreSQL", "AWS", "WebRTC"],
-      status: "Live",
-      users: "500+ institutions",
+      status: "In Development",
+      users: "Target: 500+ institutions",
       color: "from-purple-500 to-pink-500"
     },
     {
@@ -80,8 +80,8 @@ const Projects: React.FC = () => {
         "Advanced security framework"
       ],
       tech: ["C++", "WebAssembly", "JavaScript", "Linux Kernel", "WebGL"],
-      status: "Beta",
-      users: "1K+ beta testers",
+      status: "In Development",
+      users: "Target: 1K+ testers",
       color: "from-orange-500 to-red-500"
     },
     {
@@ -99,9 +99,47 @@ const Projects: React.FC = () => {
         "Intelligent workflow optimization"
       ],
       tech: ["Python", "TensorFlow", "Kubernetes", "PostgreSQL", "Redis"],
-      status: "Live",
-      users: "200+ enterprises",
+      status: "In Development",
+      users: "Target: 200+ enterprises",
       color: "from-indigo-500 to-purple-500"
+    },
+    {
+      id: 6,
+      title: "Enclosed Bike",
+      category: "Smart Transportation",
+      description: "Revolutionary enclosed electric bike with weather protection, smart navigation, and eco-friendly design for urban commuting.",
+      icon: <Building2 className="h-12 w-12 text-primary-500" />,
+      image: "https://images.pexels.com/photos/100582/pexels-photo-100582.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
+      features: [
+        "Weather-resistant enclosed design",
+        "Electric motor with long battery life",
+        "Smart GPS navigation system",
+        "Eco-friendly sustainable materials",
+        "Advanced safety features and lighting"
+      ],
+      tech: ["IoT Sensors", "Electric Motors", "GPS", "Mobile App", "Battery Management"],
+      status: "In Development",
+      users: "Target: Urban commuters",
+      color: "from-teal-500 to-green-500"
+    },
+    {
+      id: 7,
+      title: "Marriage Enquiry App",
+      category: "Social Platform",
+      description: "Comprehensive matrimonial platform connecting families with advanced matching algorithms, privacy controls, and cultural preferences.",
+      icon: <Users className="h-12 w-12 text-primary-500" />,
+      image: "https://images.pexels.com/photos/1024993/pexels-photo-1024993.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
+      features: [
+        "Advanced compatibility matching",
+        "Privacy-first profile management",
+        "Family involvement features",
+        "Cultural and religious preferences",
+        "Secure communication channels"
+      ],
+      tech: ["React Native", "Machine Learning", "Node.js", "MongoDB", "Socket.io"],
+      status: "In Development",
+      users: "Target: Marriage seekers",
+      color: "from-pink-500 to-rose-500"
     }
   ];
 
@@ -126,29 +164,8 @@ const Projects: React.FC = () => {
             
             <AnimatedSection delay={0.3} direction="up">
               <p className="text-xl text-dark-600 dark:text-dark-300 mb-8">
-                Discover the innovative solutions we've built - from mobile applications to enterprise systems, each project showcases our commitment to excellence and cutting-edge technology.
+                Explore the innovative solutions we're currently developing - from mobile applications to enterprise systems, each project represents our vision for the future of technology.
               </p>
-            </AnimatedSection>
-            
-            <AnimatedSection delay={0.5} direction="up">
-              <div className="grid grid-cols-2 md:grid-cols-4 gap-4 max-w-3xl mx-auto">
-                <div className="bg-white dark:bg-dark-900 p-4 rounded-lg border border-dark-200 dark:border-dark-700">
-                  <div className="text-2xl font-bold text-primary-500">5</div>
-                  <div className="text-sm text-dark-600 dark:text-dark-400">Live Projects</div>
-                </div>
-                <div className="bg-white dark:bg-dark-900 p-4 rounded-lg border border-dark-200 dark:border-dark-700">
-                  <div className="text-2xl font-bold text-primary-500">50K+</div>
-                  <div className="text-sm text-dark-600 dark:text-dark-400">Active Users</div>
-                </div>
-                <div className="bg-white dark:bg-dark-900 p-4 rounded-lg border border-dark-200 dark:border-dark-700">
-                  <div className="text-2xl font-bold text-primary-500">15+</div>
-                  <div className="text-sm text-dark-600 dark:text-dark-400">Technologies</div>
-                </div>
-                <div className="bg-white dark:bg-dark-900 p-4 rounded-lg border border-dark-200 dark:border-dark-700">
-                  <div className="text-2xl font-bold text-primary-500">99%</div>
-                  <div className="text-sm text-dark-600 dark:text-dark-400">Uptime</div>
-                </div>
-              </div>
             </AnimatedSection>
           </div>
         </div>
@@ -299,10 +316,10 @@ const Projects: React.FC = () => {
         <div className="container mx-auto px-4">
           <AnimatedSection delay={0.1} direction="up" className="text-center mb-16">
             <h2 className="text-3xl md:text-4xl font-display font-bold mb-6">
-              All <span className="text-gradient">Projects</span>
+              Our <span className="text-gradient">Projects</span>
             </h2>
             <p className="text-xl text-dark-600 dark:text-dark-300 max-w-3xl mx-auto">
-              Explore our complete portfolio of innovative solutions across different domains and technologies.
+              Discover the innovative solutions we're developing across different domains and cutting-edge technologies.
             </p>
           </AnimatedSection>
 
@@ -327,11 +344,7 @@ const Projects: React.FC = () => {
                     <div className={`absolute inset-0 bg-gradient-to-t ${project.color} opacity-20`}></div>
                     <div className="absolute top-4 right-4">
                       <span className={`px-2 py-1 rounded-full text-xs font-medium ${
-                        project.status === 'Live' 
-                          ? 'bg-green-100 text-green-700 dark:bg-green-900/20 dark:text-green-300'
-                          : 'bg-orange-100 text-orange-700 dark:bg-orange-900/20 dark:text-orange-300'
-                      }`}>
-                        {project.status}
+                        'bg-blue-100 text-blue-700 dark:bg-blue-900/20 dark:text-blue-300'
                       </span>
                     </div>
                   </div>
@@ -394,7 +407,7 @@ const Projects: React.FC = () => {
                 Ready to Build Something <span className="text-gradient">Amazing</span>?
               </h2>
               <p className="text-xl text-dark-600 dark:text-dark-300 mb-8">
-                Join our team and work on cutting-edge projects that make a real impact. Your next big opportunity is just one click away.
+                Join our team and help us build these innovative solutions. Your next big opportunity is just one click away.
               </p>
               <div className="flex flex-col sm:flex-row justify-center space-y-4 sm:space-y-0 sm:space-x-4">
                 <Button href="/contact" size="lg">
