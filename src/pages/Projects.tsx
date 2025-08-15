@@ -345,6 +345,8 @@ const Projects: React.FC = () => {
                     <div className="absolute top-4 right-4">
                       <span className={`px-2 py-1 rounded-full text-xs font-medium ${
                         'bg-blue-100 text-blue-700 dark:bg-blue-900/20 dark:text-blue-300'
+                      }`}>
+                        {project.status}
                       </span>
                     </div>
                   </div>
