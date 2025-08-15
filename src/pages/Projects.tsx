@@ -14,7 +14,7 @@ const Projects: React.FC = () => {
       category: "Mobile Application",
       description: "A comprehensive grocery shopping app with real-time inventory, smart recommendations, and seamless checkout experience.",
       icon: <Smartphone className="h-12 w-12 text-primary-500" />,
-      image: "https://images.pexels.com/photos/4050315/pexels-photo-4050315.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
+      image: "https://images.pexels.com/photos/264636/pexels-photo-264636.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
       features: [
         "Real-time inventory tracking",
         "AI-powered product recommendations",
@@ -33,7 +33,7 @@ const Projects: React.FC = () => {
       category: "Logistics Platform",
       description: "End-to-end delivery management system connecting customers, delivery partners, and businesses in real-time.",
       icon: <Truck className="h-12 w-12 text-primary-500" />,
-      image: "https://images.pexels.com/photos/4393021/pexels-photo-4393021.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
+      image: "https://images.pexels.com/photos/906494/pexels-photo-906494.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
       features: [
         "Real-time GPS tracking",
         "Dynamic route optimization",
@@ -109,7 +109,7 @@ const Projects: React.FC = () => {
       category: "Smart Transportation",
       description: "Revolutionary enclosed electric bike with weather protection, smart navigation, and eco-friendly design for urban commuting.",
       icon: <Building2 className="h-12 w-12 text-primary-500" />,
-      image: "https://images.pexels.com/photos/100582/pexels-photo-100582.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
+      image: "https://images.pexels.com/photos/544966/pexels-photo-544966.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
       features: [
         "Weather-resistant enclosed design",
         "Electric motor with long battery life",
@@ -280,11 +280,7 @@ const Projects: React.FC = () => {
                       <div className="flex space-x-3">
                         <Button variant="outline" size="sm">
                           <ExternalLink className="mr-2 h-4 w-4" />
-                          View Live
-                        </Button>
-                        <Button variant="ghost" size="sm">
-                          <Github className="mr-2 h-4 w-4" />
-                          Source
+                          Learn More
                         </Button>
                       </div>
                     </motion.div>
