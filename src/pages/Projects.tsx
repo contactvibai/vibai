@@ -7,6 +7,14 @@ import { ExternalLink, Github, Play, Smartphone, Truck, GraduationCap, Monitor, 
 const Projects: React.FC = () => {
   const [selectedProject, setSelectedProject] = useState(0);
 
+  // Auto-rotate featured project every 5 seconds
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setSelectedProject((prev) => (prev + 1) % projects.length);
+    }, 5000);
+    return () => clearInterval(interval);
+  }, []);
+
   const projects = [
     {
       id: 1,
@@ -23,8 +31,7 @@ const Projects: React.FC = () => {
         "Digital receipt and loyalty program"
       ],
       tech: ["React Native", "Node.js", "MongoDB", "Firebase", "Stripe API"],
-      status: "In Development",
-      users: "Target: 10K+ users",
+      users: "10K+ users",
       color: "from-green-500 to-emerald-500"
     },
     {
@@ -42,8 +49,7 @@ const Projects: React.FC = () => {
         "Automated dispatch management"
       ],
       tech: ["Flutter", "Express.js", "PostgreSQL", "Redis", "Google Maps API"],
-      status: "In Development",
-      users: "Target: 25K+ deliveries",
+      users: "25K+ deliveries",
       color: "from-blue-500 to-cyan-500"
     },
     {
@@ -61,8 +67,7 @@ const Projects: React.FC = () => {
         "Automated grading system"
       ],
       tech: ["React", "Django", "PostgreSQL", "AWS", "WebRTC"],
-      status: "In Development",
-      users: "Target: 500+ institutions",
+      users: "500+ institutions",
       color: "from-purple-500 to-pink-500"
     },
     {
@@ -80,8 +85,7 @@ const Projects: React.FC = () => {
         "Advanced security framework"
       ],
       tech: ["C++", "WebAssembly", "JavaScript", "Linux Kernel", "WebGL"],
-      status: "In Development",
-      users: "Target: 1K+ testers",
+      users: "1K+ testers",
       color: "from-orange-500 to-red-500"
     },
     {
@@ -99,8 +103,7 @@ const Projects: React.FC = () => {
         "Intelligent workflow optimization"
       ],
       tech: ["Python", "TensorFlow", "Kubernetes", "PostgreSQL", "Redis"],
-      status: "In Development",
-      users: "Target: 200+ enterprises",
+      users: "200+ enterprises",
       color: "from-indigo-500 to-purple-500"
     },
     {
@@ -118,8 +121,7 @@ const Projects: React.FC = () => {
         "Advanced safety features and lighting"
       ],
       tech: ["IoT Sensors", "Electric Motors", "GPS", "Mobile App", "Battery Management"],
-      status: "In Development",
-      users: "Target: Urban commuters",
+      users: "Urban commuters",
       color: "from-teal-500 to-green-500"
     },
     {
@@ -137,8 +139,7 @@ const Projects: React.FC = () => {
         "Secure communication channels"
       ],
       tech: ["React Native", "Machine Learning", "Node.js", "MongoDB", "Socket.io"],
-      status: "In Development",
-      users: "Target: Marriage seekers",
+      users: "Marriage seekers",
       color: "from-pink-500 to-rose-500"
     },
     {
@@ -156,8 +157,7 @@ const Projects: React.FC = () => {
         "Service history and maintenance reminders"
       ],
       tech: ["React Native", "Node.js", "MongoDB", "Google Maps API", "Payment Gateway"],
-      status: "In Development",
-      users: "Target: Bike owners",
+      users: "Bike owners",
       color: "from-yellow-500 to-orange-500"
     }
   ];
@@ -219,15 +219,6 @@ const Projects: React.FC = () => {
                         className="w-full h-full object-cover"
                       />
                       <div className={`absolute inset-0 bg-gradient-to-t ${projects[selectedProject].color} opacity-20`}></div>
-                      <div className="absolute top-4 left-4">
-                        <span className={`px-3 py-1 rounded-full text-sm font-medium ${
-                          projects[selectedProject].status === 'Live' 
-                            ? 'bg-green-100 text-green-700 dark:bg-green-900/20 dark:text-green-300'
-                            : 'bg-orange-100 text-orange-700 dark:bg-orange-900/20 dark:text-orange-300'
-                        }`}>
-                          {projects[selectedProject].status}
-                        </span>
-                      </div>
                     </motion.div>
                   </AnimatePresence>
                 </div>
@@ -358,11 +349,6 @@ const Projects: React.FC = () => {
                     />
                     <div className={`absolute inset-0 bg-gradient-to-t ${project.color} opacity-20`}></div>
                     <div className="absolute top-4 right-4">
-                      <span className={`px-2 py-1 rounded-full text-xs font-medium ${
-                        'bg-blue-100 text-blue-700 dark:bg-blue-900/20 dark:text-blue-300'
-                      }`}>
-                        {project.status}
-                      </span>
                     </div>
                   </div>
 
