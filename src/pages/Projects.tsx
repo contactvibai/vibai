@@ -33,7 +33,7 @@ const Projects: React.FC = () => {
       category: "Logistics Platform",
       description: "End-to-end delivery management system connecting customers, delivery partners, and businesses in real-time.",
       icon: <Truck className="h-12 w-12 text-primary-500" />,
-      image: "https://images.pexels.com/photos/906494/pexels-photo-906494.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
+      image: "https://images.pexels.com/photos/4246120/pexels-photo-4246120.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
       features: [
         "Real-time GPS tracking",
         "Dynamic route optimization",
@@ -109,7 +109,7 @@ const Projects: React.FC = () => {
       category: "Smart Transportation",
       description: "Revolutionary enclosed electric bike with weather protection, smart navigation, and eco-friendly design for urban commuting.",
       icon: <Building2 className="h-12 w-12 text-primary-500" />,
-      image: "https://images.pexels.com/photos/544966/pexels-photo-544966.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
+      image: "https://images.pexels.com/photos/100582/pexels-photo-100582.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
       features: [
         "Weather-resistant enclosed design",
         "Electric motor with long battery life",
@@ -140,6 +140,25 @@ const Projects: React.FC = () => {
       status: "In Development",
       users: "Target: Marriage seekers",
       color: "from-pink-500 to-rose-500"
+    },
+    {
+      id: 8,
+      title: "Customer Place Bike Service",
+      category: "On-Demand Service",
+      description: "Convenient doorstep bike servicing platform connecting bike owners with certified mechanics for repairs and maintenance at their location.",
+      icon: <Users className="h-12 w-12 text-primary-500" />,
+      image: "https://images.pexels.com/photos/190574/pexels-photo-190574.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
+      features: [
+        "Doorstep bike servicing and repairs",
+        "Certified mechanic network",
+        "Real-time service tracking",
+        "Transparent pricing and estimates",
+        "Service history and maintenance reminders"
+      ],
+      tech: ["React Native", "Node.js", "MongoDB", "Google Maps API", "Payment Gateway"],
+      status: "In Development",
+      users: "Target: Bike owners",
+      color: "from-yellow-500 to-orange-500"
     }
   ];
 
