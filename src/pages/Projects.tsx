@@ -113,7 +113,6 @@ const Projects: React.FC = () => {
       description: "Revolutionary enclosed electric bike with weather protection, smart navigation, and eco-friendly design for urban commuting.",
       icon: <Building2 className="h-12 w-12 text-primary-500" />,
       image: "https://images.pexels.com/photos/100582/pexels-photo-100582.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
-      image: "/src/assets/enclosed bike 2.png",
       features: [
         "Weather-resistant enclosed design",
         "Electric motor with long battery life",
