@@ -160,24 +160,6 @@ const Projects: React.FC = () => {
       users: "Bike owners",
       color: "from-yellow-500 to-orange-500"
     },
-    {
-      id: 9,
-      title: "Smart Home Inventory Management",
-      category: "IoT & Home Automation",
-      description: "Intelligent inventory tracking system for homes using IoT sensors, weight detection, and AI to automatically manage household supplies and groceries.",
-      icon: <Building2 className="h-12 w-12 text-primary-500" />,
-      image: "https://images.pexels.com/photos/416717/pexels-photo-416717.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
-      features: [
-        "Automated weight-based inventory tracking",
-        "Smart alerts for low stock items",
-        "AI-powered consumption pattern analysis",
-        "Integration with online grocery platforms",
-        "Voice assistant compatibility"
-      ],
-      tech: ["IoT Sensors", "Machine Learning", "React Native", "Node.js", "AWS IoT"],
-      users: "Smart home owners",
-      color: "from-violet-500 to-purple-500"
-    },
   ];
 
   return (
