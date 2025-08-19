@@ -159,7 +159,7 @@ const Projects: React.FC = () => {
       tech: ["React Native", "Node.js", "MongoDB", "Google Maps API", "Payment Gateway"],
       users: "Bike owners",
       color: "from-yellow-500 to-orange-500"
-    }
+    },
     {
       id: 9,
       title: "Smart Home Inventory Management",
