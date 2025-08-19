@@ -177,7 +177,7 @@ const Projects: React.FC = () => {
       tech: ["IoT Sensors", "Machine Learning", "React Native", "Node.js", "AWS IoT"],
       users: "Smart home owners",
       color: "from-violet-500 to-purple-500"
-    }
+    },
   ];
 
   return (
