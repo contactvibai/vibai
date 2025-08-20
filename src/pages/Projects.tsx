@@ -178,6 +178,24 @@ const Projects: React.FC = () => {
       users: "Smart home owners",
       color: "from-violet-500 to-purple-500"
     },
+    {
+      id: 10,
+      title: "Design Wear",
+      category: "Fashion & E-commerce",
+      description: "Custom fashion platform connecting customers with local tailors for personalized dress design, selection, and stitching services.",
+      icon: <Users className="h-12 w-12 text-primary-500" />,
+      image: "https://images.pexels.com/photos/934070/pexels-photo-934070.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
+      features: [
+        "Browse and customize dress designs",
+        "Local tailor network integration",
+        "Size measurement and fitting guide",
+        "Order tracking and delivery management",
+        "Quality assurance and customer reviews"
+      ],
+      tech: ["React Native", "Node.js", "MongoDB", "Payment Gateway", "Google Maps API"],
+      users: "Fashion enthusiasts",
+      color: "from-rose-500 to-pink-500"
+    }
   ];
 
   return (
