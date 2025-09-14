@@ -22,7 +22,7 @@ const Projects: React.FC = () => {
       category: "Mobile Application",
       description: "A comprehensive grocery shopping app with real-time inventory, smart recommendations, and seamless checkout experience.",
       icon: <Smartphone className="h-12 w-12 text-primary-500" />,
-      image: "/src/assets/grocery.png",
+      image: "https://images.pexels.com/photos/4246120/pexels-photo-4246120.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
       features: [
         "Real-time inventory tracking",
         "AI-powered product recommendations",
